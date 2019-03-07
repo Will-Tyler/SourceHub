@@ -62,4 +62,4 @@ A GitHub client application built for iOS.
 	
 **Wireframe** 
 
- * <img src="./IMG_4510.JPG" width=250><br>
+<img src="./IMG_4510.JPG" width=700><br>
