@@ -12,6 +12,11 @@
 		4CF32166222DF6C70034F1D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32164222DF6C70034F1D9 /* Main.storyboard */; };
 		4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32167222DF6C80034F1D9 /* Assets.xcassets */; };
 		4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */; };
+		4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFEEBCE224050EA00487DA0 /* Repository.swift */; };
+		4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFEEBD0224050F500487DA0 /* GitHub.swift */; };
+		4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFEEBD2224051DA00487DA0 /* Owner.swift */; };
+		4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */; };
+		4CFEEBD72240589F00487DA0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4CFEEBD62240589F00487DA0 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		4CF32167222DF6C80034F1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CF3216A222DF6C80034F1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CF3216C222DF6C80034F1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CFEEBCE224050EA00487DA0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		4CFEEBD0224050F500487DA0 /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
+		4CFEEBD2224051DA00487DA0 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
+		4CFEEBD62240589F00487DA0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +48,8 @@
 		4CF32154222DF6C70034F1D9 = {
 			isa = PBXGroup;
 			children = (
+				4CFEEBD62240589F00487DA0 /* README.md */,
+				4CFEEBCD224050D900487DA0 /* GitHub */,
 				4CF3215F222DF6C70034F1D9 /* SourceHub */,
 				4CF3215E222DF6C70034F1D9 /* Products */,
 			);
@@ -56,12 +68,31 @@
 			children = (
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
 				4CF32162222DF6C70034F1D9 /* ViewController.swift */,
+				4CFEEBCC2240502C00487DA0 /* Models */,
 				4CF32164222DF6C70034F1D9 /* Main.storyboard */,
 				4CF32167222DF6C80034F1D9 /* Assets.xcassets */,
 				4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */,
 				4CF3216C222DF6C80034F1D9 /* Info.plist */,
 			);
 			path = SourceHub;
+			sourceTree = "<group>";
+		};
+		4CFEEBCC2240502C00487DA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4CFEEBCD224050D900487DA0 /* GitHub */ = {
+			isa = PBXGroup;
+			children = (
+				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
+				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
+				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
+				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
+			);
+			path = GitHub;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +155,7 @@
 			files = (
 				4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */,
 				4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */,
+				4CFEEBD72240589F00487DA0 /* README.md in Resources */,
 				4CF32166222DF6C70034F1D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +169,10 @@
 			files = (
 				4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
+				4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */,
+				4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */,
+				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
+				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
