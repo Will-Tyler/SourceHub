@@ -66,13 +66,13 @@ A GitHub client application built for iOS.
 ```swift
 struct AuthenticatedUser: Codable {
 
-let login: String
-let id: Int
-let avatarURL: URL
-let reposURL: URL
-let name: String
-let email: String
-let bio: String
+	let login: String
+	let id: Int
+	let avatarURL: URL
+	let reposURL: URL
+	let name: String
+	let email: String
+	let bio: String
 
 }
 ```
@@ -81,10 +81,10 @@ let bio: String
 ```swift
 struct Owner: Codable {
 
-let login: String
-let id: Int
-let url: String
-let reposURL: URL
+	let login: String
+	let id: Int
+	let url: String
+	let reposURL: URL
 
 }
 ```
@@ -94,16 +94,16 @@ let reposURL: URL
 
 struct Repository: Codable {
 
-let id: Int
-let nodeID: String
-let name: String
-let fullName: String
-let owner: Owner
-let isPrivate: Bool
-let description: String
-let isFork: Bool
-let url: URL
-let defaultBranch: String
+	let id: Int
+	let nodeID: String
+	let name: String
+	let fullName: String
+	let owner: Owner
+	let isPrivate: Bool
+	let description: String
+	let isFork: Bool
+	let url: URL
+	let defaultBranch: String
 
 }
 ```
@@ -123,26 +123,14 @@ let defaultBranch: String
 - File Screen
 	- (GET) Retrieve the contents of the file
 
-#### [OPTIONAL:] Existing API Endpoints
-##### An API Of Ice And Fire
-- Base URL - [http://www.anapioficeandfire.com/api](http://www.anapioficeandfire.com/api)
+#### Existing API Endpoints
+##### GitHub API
+- Base URL - [https://api.github.com](https://api.github.com)
 
 HTTP Verb | Endpoint | Description
 ----------|----------|------------
-`GET`    | /characters | get all characters
-`GET`    | /characters/?name=name | return specific character by name
-`GET`    | /houses   | get all houses
-`GET`    | /houses/?name=name | return specific house by name
-
-##### Game of Thrones API
-- Base URL - [https://api.got.show/api](https://api.got.show/api)
-
-HTTP Verb | Endpoint | Description
-----------|----------|------------
-`GET`    | /cities | gets all cities
-`GET`    | /cities/byId/:id | gets specific city by :id
-`GET`    | /continents | gets all continents
-`GET`    | /continents/byId/:id | gets specific continent by :id
-`GET`    | /regions | gets all regions
-`GET`    | /regions/byId/:id | gets specific region by :id
-`GET`    | /characters/paths/:name | gets a character's path with a given name
+`POST`    | /authorizations | Create a new authorization
+`GET`    | /users/:username/received_events | Get the user's events
+`GET`    | /user | Retrieve the information about the authenticated user
+`GET`    | /user/repos | Get the user's repositories.
+`GET`    | /repos/:owner/:repo/contents/:path | Get the contents of a repository or directory
