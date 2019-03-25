@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C8010D622498AC800596297 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C8010D522498AC800596297 /* .gitignore */; };
 		4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32160222DF6C70034F1D9 /* AppDelegate.swift */; };
 		4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32162222DF6C70034F1D9 /* ViewController.swift */; };
-		4CF32166222DF6C70034F1D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32164222DF6C70034F1D9 /* Main.storyboard */; };
 		4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32167222DF6C80034F1D9 /* Assets.xcassets */; };
 		4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */; };
 		4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFEEBCE224050EA00487DA0 /* Repository.swift */; };
@@ -20,10 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C8010D522498AC800596297 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4CF3215D222DF6C70034F1D9 /* SourceHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF32160222DF6C70034F1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF32162222DF6C70034F1D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4CF32165222DF6C70034F1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CF32167222DF6C80034F1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CF3216A222DF6C80034F1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CF3216C222DF6C80034F1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +48,7 @@
 		4CF32154222DF6C70034F1D9 = {
 			isa = PBXGroup;
 			children = (
+				4C8010D522498AC800596297 /* .gitignore */,
 				4CFEEBD62240589F00487DA0 /* README.md */,
 				4CFEEBCD224050D900487DA0 /* GitHub */,
 				4CF3215F222DF6C70034F1D9 /* SourceHub */,
@@ -68,20 +69,11 @@
 			children = (
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
 				4CF32162222DF6C70034F1D9 /* ViewController.swift */,
-				4CFEEBCC2240502C00487DA0 /* Models */,
-				4CF32164222DF6C70034F1D9 /* Main.storyboard */,
 				4CF32167222DF6C80034F1D9 /* Assets.xcassets */,
 				4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */,
 				4CF3216C222DF6C80034F1D9 /* Info.plist */,
 			);
 			path = SourceHub;
-			sourceTree = "<group>";
-		};
-		4CFEEBCC2240502C00487DA0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		4CFEEBCD224050D900487DA0 /* GitHub */ = {
@@ -153,10 +145,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8010D622498AC800596297 /* .gitignore in Resources */,
 				4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */,
 				4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */,
 				4CFEEBD72240589F00487DA0 /* README.md in Resources */,
-				4CF32166222DF6C70034F1D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,14 +171,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4CF32164222DF6C70034F1D9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CF32165222DF6C70034F1D9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
