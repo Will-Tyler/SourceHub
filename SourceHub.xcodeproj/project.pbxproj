@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4C8010D622498AC800596297 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C8010D522498AC800596297 /* .gitignore */; };
+		4C8010DC224990F800596297 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DB224990F800596297 /* URL.swift */; };
+		4C8010DE2249912500596297 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DD2249912500596297 /* HTTP.swift */; };
+		4C8010E02249934F00596297 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DF2249934F00596297 /* String.swift */; };
+		4C8395292249C4B500A7DFC2 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C8395282249C4B400A7DFC2 /* Client Secret */; };
 		4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32160222DF6C70034F1D9 /* AppDelegate.swift */; };
 		4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32162222DF6C70034F1D9 /* ViewController.swift */; };
 		4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32167222DF6C80034F1D9 /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		4C8010D522498AC800596297 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4C8010DB224990F800596297 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4C8010DD2249912500596297 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		4C8010DF2249934F00596297 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4C8395282249C4B400A7DFC2 /* Client Secret */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
 		4CF3215D222DF6C70034F1D9 /* SourceHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF32160222DF6C70034F1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF32162222DF6C70034F1D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
+				4C8010DD2249912500596297 /* HTTP.swift */,
+				4C8010DF2249934F00596297 /* String.swift */,
+				4C8010DB224990F800596297 /* URL.swift */,
 				4CF32162222DF6C70034F1D9 /* ViewController.swift */,
 				4CF32167222DF6C80034F1D9 /* Assets.xcassets */,
 				4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */,
@@ -79,6 +90,7 @@
 		4CFEEBCD224050D900487DA0 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
+				4C8395282249C4B400A7DFC2 /* Client Secret */,
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
@@ -149,6 +161,7 @@
 				4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */,
 				4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */,
 				4CFEEBD72240589F00487DA0 /* README.md in Resources */,
+				4C8395292249C4B500A7DFC2 /* Client Secret in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,12 +172,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8010DE2249912500596297 /* HTTP.swift in Sources */,
 				4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
+				4C8010E02249934F00596297 /* String.swift in Sources */,
 				4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */,
 				4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */,
 				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
 				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
+				4C8010DC224990F800596297 /* URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
