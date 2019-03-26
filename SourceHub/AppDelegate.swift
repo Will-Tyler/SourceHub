@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-		print(url.absoluteString)
+		GitHub.completeAuthentication(with: url)
 
 		return true
 	}

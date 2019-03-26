@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 		let button = UIButton(type: .system)
 
 		button.setTitle("Sign In", for: .normal)
-		button.addTarget(self, action: #selector(initiateAuthentication), for: .touchUpInside)
+		button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 
 		return button
 	}()
@@ -35,7 +35,11 @@ class ViewController: UIViewController {
 	}
 
 	@objc private func signIn() {
-		GitHub.initiateAuthentication(completion: { (authUser, error) in })
+		GitHub.initiateAuthentication(completion: { error in
+			if let error = error {
+				debugPrint(error)
+			}
+		})
 	}
 
 }

@@ -12,6 +12,7 @@
 		4C8010DE2249912500596297 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DD2249912500596297 /* HTTP.swift */; };
 		4C8010E02249934F00596297 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DF2249934F00596297 /* String.swift */; };
 		4C8395292249C4B500A7DFC2 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C8395282249C4B400A7DFC2 /* Client Secret */; };
+		4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C83952A2249CE7100A7DFC2 /* Access.swift */; };
 		4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32160222DF6C70034F1D9 /* AppDelegate.swift */; };
 		4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32162222DF6C70034F1D9 /* ViewController.swift */; };
 		4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32167222DF6C80034F1D9 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		4C8010DD2249912500596297 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		4C8010DF2249934F00596297 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4C8395282249C4B400A7DFC2 /* Client Secret */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
+		4C83952A2249CE7100A7DFC2 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		4CF3215D222DF6C70034F1D9 /* SourceHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF32160222DF6C70034F1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF32162222DF6C70034F1D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				4C8395282249C4B400A7DFC2 /* Client Secret */,
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
+				4C83952A2249CE7100A7DFC2 /* Access.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
@@ -181,6 +184,7 @@
 				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
 				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
 				4C8010DC224990F800596297 /* URL.swift in Sources */,
+				4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
