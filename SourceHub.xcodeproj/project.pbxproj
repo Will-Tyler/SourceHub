@@ -11,7 +11,6 @@
 		4C8010DC224990F800596297 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DB224990F800596297 /* URL.swift */; };
 		4C8010DE2249912500596297 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DD2249912500596297 /* HTTP.swift */; };
 		4C8010E02249934F00596297 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DF2249934F00596297 /* String.swift */; };
-		4C8395292249C4B500A7DFC2 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C8395282249C4B400A7DFC2 /* Client Secret */; };
 		4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C83952A2249CE7100A7DFC2 /* Access.swift */; };
 		4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32160222DF6C70034F1D9 /* AppDelegate.swift */; };
 		4CF32163222DF6C70034F1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32162222DF6C70034F1D9 /* ViewController.swift */; };
@@ -29,7 +28,6 @@
 		4C8010DB224990F800596297 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4C8010DD2249912500596297 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		4C8010DF2249934F00596297 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		4C8395282249C4B400A7DFC2 /* Client Secret */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
 		4C83952A2249CE7100A7DFC2 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		4CF3215D222DF6C70034F1D9 /* SourceHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF32160222DF6C70034F1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		4CFEEBCD224050D900487DA0 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
-				4C8395282249C4B400A7DFC2 /* Client Secret */,
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
 				4C83952A2249CE7100A7DFC2 /* Access.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
@@ -164,7 +161,6 @@
 				4CF3216B222DF6C80034F1D9 /* LaunchScreen.storyboard in Resources */,
 				4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */,
 				4CFEEBD72240589F00487DA0 /* README.md in Resources */,
-				4C8395292249C4B500A7DFC2 /* Client Secret in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
