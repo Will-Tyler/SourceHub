@@ -20,12 +20,11 @@ class HTTP {
 		if let endpoint = endpoint {
 			url.appendPathComponent(endpoint)
 		}
-
 		if let parameters = parameters {
 			url.parameters = parameters
 		}
 
-		print(method, url)
+		print(method.rawValue, url)
 
 		var request = URLRequest(url: url)
 

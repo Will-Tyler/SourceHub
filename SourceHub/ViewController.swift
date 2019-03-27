@@ -2,14 +2,15 @@
 //  ViewController.swift
 //  SourceHub
 //
-//  Created by Will Tyler on 3/5/19.
+//  Created by Will Tyler on 3/27/19.
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
 import UIKit
 
 
-class ViewController: UIViewController {
+/// A customized subclass of UIViewController.
+class ViewController: ViewController {
 
 	private lazy var signInButton: UIButton = {
 		let button = UIButton(type: .system)
@@ -35,10 +36,8 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = .white
-
 		view.addSubview(signInButton)
-        view.addSubview(signInImageView)
+    view.addSubview(signInImageView)
 
 		signInButton.translatesAutoresizingMaskIntoConstraints = false
 		signInButton.heightAnchor.constraint(equalToConstant: signInButton.intrinsicContentSize.height + 16).isActive = true
@@ -47,8 +46,8 @@ class ViewController: UIViewController {
 		signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         signInImageView.translatesAutoresizingMaskIntoConstraints = false
-//        signInImageView.heightAnchor.constraint(equalToConstant: signInButton.intrinsicContentSize.height + 16).isActive = true
-//        signInImageView.widthAnchor.constraint(equalToConstant: signInButton.intrinsicContentSize.width + 32).isActive = true
+        signInImageView.heightAnchor.constraint(equalToConstant: signInButton.intrinsicContentSize.height + 16).isActive = true
+        signInImageView.widthAnchor.constraint(equalToConstant: signInButton.intrinsicContentSize.width + 32).isActive = true
         signInImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         signInImageView.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -16).isActive = true
 	}
@@ -62,4 +61,3 @@ class ViewController: UIViewController {
 	}
 
 }
-

@@ -55,10 +55,6 @@ class GitHub {
 	/// - Parameters:
 	///   - completion: A completion handler that will be passed an Error if an error occured. Guarenteed to execute exactly once.
 	static func initiateAuthentication(completion: @escaping (Error?)->()) {
-		if isAuthenticated {
-			print("Already authenticated...")
-			return
-		}
 		var loginURL = URL(string: "https://github.com/login/oauth/authorize")!
 		let parameters = [
 			"client_id": clientID,
@@ -110,6 +106,10 @@ class GitHub {
 
 			do {
 				GitHub.access = try JSONDecoder().decode(Access.self, from: data)
+
+				while !authenticationQueue.isEmpty {
+					authenticationQueue.removeFirst()(nil)
+				}
 			}
 			catch {
 				while !authenticationQueue.isEmpty {
