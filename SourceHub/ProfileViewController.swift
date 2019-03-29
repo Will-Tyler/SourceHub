@@ -34,7 +34,9 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
         table.backgroundColor = .clear
         table.delegate = self
         table.dataSource = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: RepoCell.cellID)
+        table.register(RepoCell.self, forCellReuseIdentifier: RepoCell.cellID)
+        //table.estimatedRowHeight = 150
+        table.rowHeight = 150
         
         return table
     }()
@@ -42,12 +44,30 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        
         getRepo()
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
 		let signOutItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutItemAction))
 
 		navigationItem.setRightBarButton(signOutItem, animated: false)
 	}
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getRepo()
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: view.frame.height / 2).isActive = true
+    }
     
     func getRepo() {
 		GitHub.handleRepositories(with: { (repositories, error) in
@@ -56,6 +76,8 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
 			}
 			else if let repositories = repositories {
 				self.repos = repositories
+                print("\(self.repos)")
+                print("\(self.repos.count)")
 			}
 		})
     }
@@ -69,6 +91,7 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
         let repo = repos[indexPath.row]
 
         cell.repo = repo
+
 
         return cell
     }
