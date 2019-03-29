@@ -20,4 +20,19 @@ class FeedViewController: ViewController {
 		super.init(coder: aDecoder)
 	}
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		GitHub.handleReceivedEvents(with: { (events, error) in
+			if let error = error {
+				debugPrint(error)
+			}
+			else if let events = events {
+				for event in events {
+					print(event.id)
+				}
+			}
+		})
+	}
+
 }

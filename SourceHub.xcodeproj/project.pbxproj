@@ -13,6 +13,9 @@
 		4C4286CD224C304D00E00170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CC224C304D00E00170 /* ProfileViewController.swift */; };
 		4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CE224C31AF00E00170 /* ViewController.swift */; };
 		4C4286D1224C387E00E00170 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C4286D0224C387E00E00170 /* Client Secret */; };
+		4C7E7DF1224E81B90095C4A8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF0224E81B90095C4A8 /* Event.swift */; };
+		4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */; };
+		4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */; };
 		4C8010D622498AC800596297 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C8010D522498AC800596297 /* .gitignore */; };
 		4C8010DC224990F800596297 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DB224990F800596297 /* URL.swift */; };
 		4C8010DE2249912500596297 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DD2249912500596297 /* HTTP.swift */; };
@@ -36,6 +39,9 @@
 		4C4286CC224C304D00E00170 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4C4286CE224C31AF00E00170 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C4286D0224C387E00E00170 /* Client Secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
+		4C7E7DF0224E81B90095C4A8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEvent.swift; sourceTree = "<group>"; };
+		4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDecoder.swift; sourceTree = "<group>"; };
 		4C8010D522498AC800596297 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4C8010DB224990F800596297 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4C8010DD2249912500596297 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -65,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C7E7DF2224E90720095C4A8 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4C7E7DF0224E81B90095C4A8 /* Event.swift */,
+				4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */,
+				4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		4CF32154222DF6C70034F1D9 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +127,7 @@
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
 				4C83952A2249CE7100A7DFC2 /* Access.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
+				4C7E7DF2224E90720095C4A8 /* Events */,
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
 			);
@@ -199,13 +216,16 @@
 				4C4286CD224C304D00E00170 /* ProfileViewController.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
 				4C8010E02249934F00596297 /* String.swift in Sources */,
+				4C7E7DF1224E81B90095C4A8 /* Event.swift in Sources */,
 				4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */,
 				4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */,
+				4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */,
 				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
 				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
 				4C8010DC224990F800596297 /* URL.swift in Sources */,
 				4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */,
 				4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */,
+				4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -124,4 +124,57 @@ class GitHub {
 		access = nil
 	}
 
+	static func handleAuthenticatedUser(with handler: @escaping (AuthenticatedUser?, Error?)->()) {
+		guard let access = access else {
+			handler(nil, "No user is authenticated for GitHub.")
+			return
+		}
+
+		HTTP.request(apiURL, endpoint: "user", headers: ["Authorization": "token \(access.token)"], with: { (data, response, error) in
+			guard let data = data else {
+				handler(nil, error)
+				return
+			}
+
+			do {
+				let user = try JSONDecoder().decode(AuthenticatedUser.self, from: data)
+
+				handler(user, nil)
+			}
+			catch {
+				handler(nil, error)
+			}
+		})
+	}
+
+	static func handleReceivedEvents(with handler: @escaping ([GitHubEvent]?, Error?)->()) {
+		guard let access = access else {
+			handler(nil, "No GitHub user signed in.")
+			return
+		}
+
+		handleAuthenticatedUser(with: { (authenticatedUser, error) in
+			guard let authenticatedUser = authenticatedUser else {
+				handler(nil, error)
+				return
+			}
+
+			HTTP.request(apiURL, endpoint: "users/\(authenticatedUser.login)/received_events", headers: ["Authorization": "token \(access.token)"], with: { (data, response, error) in
+				guard let data = data else {
+					handler(nil, error)
+					return
+				}
+
+				do {
+					let events = try JSONDecoder().decode([EventDecoder].self, from: data).compactMap({ $0.event })
+
+					handler(events, nil)
+				}
+				catch {
+					handler(nil, error)
+				}
+			})
+		})
+	}
+
 }
