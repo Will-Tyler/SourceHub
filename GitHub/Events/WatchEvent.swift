@@ -24,6 +24,7 @@ extension GitHub {
 		init(from decoder: Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 
+			// Sometimes id is an Int. Other times it is a String.
 			if let id = try? container.decode(Int.self, forKey: .id) {
 				self.id = "\(id)"
 			}

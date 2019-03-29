@@ -19,11 +19,6 @@ extension GitHub {
 			let container = try decoder.singleValueContainer()
 
 			event = try? container.decode(WatchEvent.self)
-
-//			if event == nil {
-//				let context = DecodingError.Context(codingPath: container.codingPath, debugDescription: "Unable to decode into an event.")
-//				throw DecodingError.typeMismatch(GitHubEvent.self, context)
-//			}
 		}
 
 	}
