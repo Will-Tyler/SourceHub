@@ -22,7 +22,9 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
     
     var repos = [GitHub.Repository]() {
         didSet {
-            tableView.reloadData()
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
         }
     }
     
@@ -41,7 +43,6 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
 		super.viewDidLoad()
         
         getRepo()
-        tableView.reloadData()
         
 		let signOutItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutItemAction))
 
@@ -49,25 +50,14 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
 	}
     
     func getRepo() {
-        
-        let repoURL = URL(string: "https://api.github.com/user/repos")!
-        let parameters = [
-            "visibility": "all",
-            "affiliation": "owner,collaborator",
-        ]
-        
-        HTTP.request(method: .get, repoURL, headers: ["Accept": "application/json"], parameters: parameters, with: { (data, response, error) in
-            guard let data = data else {
-                return
-            }
-            print(data)
-            do {
-                self.repos = [try JSONDecoder().decode(GitHub.Repository.self, from: data)]
-            }
-            catch {
-                print("\(error)")
-            }
-        })
+		GitHub.handleRepositories(with: { (repositories, error) in
+			if let error = error {
+				debugPrint(error)
+			}
+			else if let repositories = repositories {
+				self.repos = repositories
+			}
+		})
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +67,9 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: RepoCell.cellID) as! RepoCell
         let repo = repos[indexPath.row]
-        cell.repo = repo as GitHub.Repository
+
+        cell.repo = repo
+
         return cell
     }
 

@@ -91,9 +91,9 @@
 			children = (
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
 				4C4286CA224C2FFA00E00170 /* FeedViewController.swift */,
+				4C8010DD2249912500596297 /* HTTP.swift */,
 				4C4286CC224C304D00E00170 /* ProfileViewController.swift */,
 				18A5D2A8224D6E80005A7D8B /* RepoCell.swift */,
-				4C8010DD2249912500596297 /* HTTP.swift */,
 				4CF32162222DF6C70034F1D9 /* SignInViewController.swift */,
 				4C8010DF2249934F00596297 /* String.swift */,
 				4C4286C6224C2C8400E00170 /* TabBarController.swift */,
