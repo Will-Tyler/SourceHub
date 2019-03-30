@@ -147,10 +147,20 @@ class GitHub {
 		})
 	}
 
-	static func handleReceivedEvents(with handler: @escaping ([GitHubEvent]?, Error?)->()) {
+	static func handleReceivedEvents(page: UInt? = nil, with handler: @escaping ([GitHubEvent]?, Error?)->()) {
 		guard let access = access else {
 			handler(nil, "No GitHub user signed in.")
 			return
+		}
+
+		let parameters: URL.Parameters?
+
+		if var page = page {
+			page = min(page, 10)
+			parameters = ["page": String(page)]
+		}
+		else {
+			parameters = nil
 		}
 
 		handleAuthenticatedUser(with: { (authenticatedUser, error) in
@@ -159,7 +169,7 @@ class GitHub {
 				return
 			}
 
-			HTTP.request(apiURL, endpoint: "users/\(authenticatedUser.login)/received_events", headers: ["Authorization": "token \(access.token)"], with: { (data, response, error) in
+			HTTP.request(apiURL, endpoint: "users/\(authenticatedUser.login)/received_events", headers: ["Authorization": "token \(access.token)"], parameters: parameters, with: { (data, response, error) in
 				guard let data = data else {
 					handler(nil, error)
 					return

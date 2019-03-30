@@ -18,6 +18,7 @@ class FeedViewController: UITableViewController {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
 		title = "Feed"
+		tabBarItem.image = UIImage(named: "event_note")!.af_imageScaled(to: CGSize(square: 30))
 	}
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -26,6 +27,7 @@ class FeedViewController: UITableViewController {
 	override func loadView() {
 		super.loadView()
 
+		tableView.tableFooterView = UIView(frame: .zero)
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 	override func viewDidLoad() {
@@ -45,23 +47,30 @@ class FeedViewController: UITableViewController {
 		})
 	}
 
-	private func fetchEvents(completion: (()->())? = nil) {
-		GitHub.handleReceivedEvents(with: { (events, error) in
+	private func fetchEvents(page: UInt? = nil, completion: (()->())? = nil) {
+		GitHub.handleReceivedEvents(page: page, with: { (events, error) in
 			if let error = error {
 				debugPrint(error)
 			}
 			if let events = events {
-				self.events = events
+				if page == nil {
+					self.currentPage = 0
+					self.events = events
+				}
+				else {
+					self.events.append(contentsOf: events)
+				}
 			}
 
 			completion?()
 		})
 	}
 
+	private var currentPage = 1 as UInt
 	private var events: [GitHubEvent] = [] {
 		didSet {
 			DispatchQueue.main.async {
-				self.tableView.reloadSections([0], with: .automatic)
+				self.tableView.reloadData()
 			}
 		}
 	}
@@ -87,9 +96,14 @@ class FeedViewController: UITableViewController {
 			cell.textLabel?.attributedText = attributedMessage
 
 			watchEvent.actor.handleAvatarImage(with: { image in
-				cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 48)).af_imageRounded(withCornerRadius: 4)
+				cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
 				cell.setNeedsLayout()
 			})
+		}
+
+		if indexPath.row == events.count-5, currentPage < 10 {
+			currentPage += 1
+			fetchEvents(page: currentPage)
 		}
 
 		return cell
