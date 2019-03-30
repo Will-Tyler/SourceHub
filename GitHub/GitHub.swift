@@ -124,4 +124,77 @@ class GitHub {
 		access = nil
 	}
 
+	/// Fetches the currently authenticated user from GitHub.
+	///
+	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.
+	static func handleAuthenticatedUser(with handler: @escaping (AuthenticatedUser?, Error?)->()) {
+		guard let access = access else {
+			handler(nil, "No user is authenticated for GitHub.")
+			return
+		}
+
+		HTTP.request(apiURL, endpoint: "user", headers: ["Authorization": "token \(access.token)"], with: { (data, response, error) in
+			guard let data = data else {
+				handler(nil, error)
+				return
+			}
+
+			do {
+				let user = try JSONDecoder().decode(AuthenticatedUser.self, from: data)
+
+				handler(user, nil)
+			}
+			catch {
+				handler(nil, error)
+			}
+		})
+	}
+
+	/// Fetches the user's received events from GitHub.
+	/// Each page returns 30 events, and there are at most 10 pages.
+	/// The pages are indexed starting at 1.
+	///
+	/// - Parameters:
+	///   - page: the page of events to fetch
+	///   - handler: a handler that is passed an array of GitHubEvents or an error if one occurs
+	static func handleReceivedEvents(page: UInt? = nil, with handler: @escaping ([GitHubEvent]?, Error?)->()) {
+		guard let access = access else {
+			handler(nil, "No GitHub user signed in.")
+			return
+		}
+
+		let parameters: URL.Parameters?
+
+		if var page = page {
+			page = max(1, min(page, 10))
+			parameters = ["page": String(page)]
+		}
+		else {
+			parameters = nil
+		}
+
+		handleAuthenticatedUser(with: { (authenticatedUser, error) in
+			guard let authenticatedUser = authenticatedUser else {
+				handler(nil, error)
+				return
+			}
+
+			HTTP.request(apiURL, endpoint: "users/\(authenticatedUser.login)/received_events", headers: ["Authorization": "token \(access.token)"], parameters: parameters, with: { (data, response, error) in
+				guard let data = data else {
+					handler(nil, error)
+					return
+				}
+
+				do {
+					let events = try JSONDecoder().decode([EventDecoder].self, from: data).compactMap({ $0.event })
+
+					handler(events, nil)
+				}
+				catch {
+					handler(nil, error)
+				}
+			})
+		})
+	}
+
 }
