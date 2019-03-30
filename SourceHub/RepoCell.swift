@@ -67,6 +67,13 @@ class RepoCell: UITableViewCell {
 
 	private var didSetupInitialLayout = false
     private func setupInitialLayout() {
+        let isPrivateLabel = UILabel()
+        isPrivateLabel.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        isPrivateLabel.text = "Private"
+        isPrivateLabel.layer.cornerRadius = 5
+        isPrivateLabel.layer.masksToBounds = true
+        
+        addSubview(isPrivateLabel)
         addSubview(repoLabel)
         addSubview(isPrivateImageView)
         addSubview(descriptionLabel)
@@ -83,11 +90,17 @@ class RepoCell: UITableViewCell {
         descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
         
+        isPrivateLabel.translatesAutoresizingMaskIntoConstraints = false
+        isPrivateLabel.heightAnchor.constraint(equalToConstant: isPrivateLabel.intrinsicContentSize.height).isActive = true
+        isPrivateLabel.widthAnchor.constraint(equalToConstant: isPrivateLabel.intrinsicContentSize.width).isActive = true
+        isPrivateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        isPrivateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+        
         isPrivateImageView.translatesAutoresizingMaskIntoConstraints = false
         isPrivateImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
         isPrivateImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        isPrivateImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8).isActive = true
-        isPrivateImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+        isPrivateImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        isPrivateImageView.leadingAnchor.constraint(equalTo: isPrivateLabel.trailingAnchor, constant: 8).isActive = true
 
 		didSetupInitialLayout = true
     }
