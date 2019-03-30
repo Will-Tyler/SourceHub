@@ -6,7 +6,7 @@
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 extension GitHub {
@@ -65,6 +65,14 @@ extension GitHub.WatchEvent {
 		let gravatarID: String
 		let url: URL
 		let avatarURL: URL
+
+		func handleAvatarImage(with handler: @escaping (UIImage?)->()) {
+			let request = URLRequest(url: avatarURL)
+
+			imageDownloader.download(request, completion: { (dataResponse) in
+				handler(dataResponse.value)
+			})
+		}
 
 		private enum CodingKeys: String, CodingKey {
 			case id

@@ -57,8 +57,22 @@ class FeedViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		if let watchEvent = event as? GitHub.WatchEvent {
+			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+			let attributedMessage = NSMutableAttributedString()
+			let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
+			let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
+
+			attributedMessage.append(boldDisplayLogin)
+			attributedMessage.append(NSAttributedString(string: " starred "))
+			attributedMessage.append(boldRepoName)
+
 			cell.textLabel?.numberOfLines = 0
-			cell.textLabel?.text = "\(watchEvent.actor.displayLogin) starred \(watchEvent.repo.name)"
+			cell.textLabel?.attributedText = attributedMessage
+
+			watchEvent.actor.handleAvatarImage(with: { image in
+				cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 48)).af_imageRounded(withCornerRadius: 4)
+				cell.setNeedsLayout()
+			})
 		}
 
 		return cell
