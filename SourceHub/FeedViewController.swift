@@ -23,14 +23,6 @@ class FeedViewController: UITableViewController {
 		super.init(coder: aDecoder)
 	}
 
-	private var events: [GitHubEvent] = [] {
-		didSet {
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		}
-	}
-
 	override func loadView() {
 		super.loadView()
 
@@ -39,14 +31,39 @@ class FeedViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		refreshControl = UIRefreshControl()
+		refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: .valueChanged)
+
+		fetchEvents()
+	}
+
+	@objc private func refreshControlAction() {
+		fetchEvents(completion: { [weak self] in
+			DispatchQueue.main.async {
+				self?.refreshControl?.endRefreshing()
+			}
+		})
+	}
+
+	private func fetchEvents(completion: (()->())? = nil) {
 		GitHub.handleReceivedEvents(with: { (events, error) in
 			if let error = error {
 				debugPrint(error)
 			}
 			if let events = events {
-				self.events.append(contentsOf: events)
+				self.events = events
 			}
+
+			completion?()
 		})
+	}
+
+	private var events: [GitHubEvent] = [] {
+		didSet {
+			DispatchQueue.main.async {
+				self.tableView.reloadSections([0], with: .automatic)
+			}
+		}
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
