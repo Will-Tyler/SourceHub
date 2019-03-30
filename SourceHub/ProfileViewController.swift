@@ -76,8 +76,6 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
 			}
 			else if let repositories = repositories {
 				self.repos = repositories
-                print("\(self.repos)")
-                print("\(self.repos.count)")
 			}
 		})
     }

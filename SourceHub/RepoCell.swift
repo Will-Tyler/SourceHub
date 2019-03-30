@@ -85,7 +85,7 @@ class RepoCell: UITableViewCell {
         repoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.heightAnchor.constraint(equalToConstant: descriptionLabel.intrinsicContentSize.height).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: isPrivateLabel.topAnchor, constant: -8).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: repoLabel.bottomAnchor, constant: 8).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
