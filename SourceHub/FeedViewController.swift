@@ -28,7 +28,7 @@ class FeedViewController: UITableViewController {
 		super.loadView()
 
 		tableView.tableFooterView = UIView(frame: .zero)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,21 +48,30 @@ class FeedViewController: UITableViewController {
 	}
 
 	private func fetchEvents(page: UInt? = nil, completion: (()->())? = nil) {
-		GitHub.handleReceivedEvents(page: page, with: { (events, error) in
-			if let error = error {
+		GitHub.handleAuthenticatedUser(with: { result in
+			switch result {
+			case .failure(let error):
 				debugPrint(error)
-			}
-			if let events = events {
-				if page == nil {
-					self.currentPage = 0
-					self.events = events
-				}
-				else {
-					self.events.append(contentsOf: events)
-				}
-			}
 
-			completion?()
+			case .success(let authenticatedUser):
+				GitHub.handleReceivedEvents(page: page, login: authenticatedUser.login, with: { result in
+					switch result {
+					case .failure(let error):
+						debugPrint(error)
+
+					case .success(let events):
+						if page == nil {
+							self.currentPage = 0
+							self.events = events
+						}
+						else {
+							self.events.append(contentsOf: events)
+						}
+					}
+
+					completion?()
+				})
+			}
 		})
 	}
 
@@ -80,7 +89,7 @@ class FeedViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let event = events[indexPath.row]
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
 
 		if let watchEvent = event as? GitHub.WatchEvent {
 			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
@@ -96,8 +105,10 @@ class FeedViewController: UITableViewController {
 			cell.textLabel?.attributedText = attributedMessage
 
 			watchEvent.actor.handleAvatarImage(with: { image in
-				cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
-				cell.setNeedsLayout()
+				DispatchQueue.main.async {
+					cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
+					cell.setNeedsLayout()
+				}
 			})
 		}
 
