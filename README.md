@@ -8,8 +8,8 @@ A GitHub client application built for iOS.
 
 **Required Must-have Stories**
 
- * The user is able to sign in using their GitHub account.
- * The user is able to view their GitHub feed.
+ - [x] The user is able to sign in using their GitHub account.
+ - [x] The user is able to view their GitHub feed.
  * The user can view a profile page, highlighting information about their repositories and contributions.
  * The user sees their profile picture in the profile page.
  * The user sees their GitHub username in the profile page.
