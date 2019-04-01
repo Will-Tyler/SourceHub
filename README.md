@@ -4,6 +4,8 @@
 
 A GitHub client application built for iOS.
 
+<img src='Sprint1.gif' width='' alt='Video Walkthrough' />
+
 ## 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
