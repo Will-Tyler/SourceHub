@@ -17,9 +17,9 @@ extension GitHub {
 		let id: Int
 		let avatarURL: URL
 		let reposURL: URL
-		let name: String
-		let email: String
-		let bio: String
+		let name: String?
+		let email: String?
+		let bio: String?
 
 		private enum CodingKeys: String, CodingKey {
 			case login
