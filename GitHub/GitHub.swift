@@ -127,7 +127,7 @@ class GitHub {
 	/// Fetches the currently authenticated user from GitHub.
 	///
 	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.
-	static func handleAuthenticatedUser(with handler: @escaping (Result<AuthenticatedUser, Error>)->()) {
+	static func handleAuthenticatedUser(with handler: Handler<AuthenticatedUser, Error>) {
 		guard let access = access else {
 			handler(.failure(GitHubError.notAuthenticated))
 			return
@@ -158,7 +158,7 @@ class GitHub {
 	///   - page: the page of events to fetch
 	///   - login: the username of the GitHub user to fetch events for
 	///   - handler: a handler that is passed an array of GitHubEvents or an error if one occurs
-	static func handleReceivedEvents(page: UInt? = nil, login: String, with handler: @escaping (Result<[GitHubEvent], Error>)->()) {
+	static func handleReceivedEvents(page: UInt? = nil, login: String, with handler: Handler<[GitHubEvent], Error>) {
 		guard let access = access else {
 			handler(.failure(GitHubError.notAuthenticated))
 			return

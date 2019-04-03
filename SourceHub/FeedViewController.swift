@@ -48,24 +48,32 @@ class FeedViewController: UITableViewController {
 	}
 
 	private func fetchEvents(page: UInt? = nil, completion: (()->())? = nil) {
-		GitHub.handleAuthenticatedUser(with: { result in
+		GitHub.handleAuthenticatedUser(with: Handler { [weak self] result in
 			switch result {
 			case .failure(let error):
-				debugPrint(error)
+				self?.alertUser(title: "Error Fetching Events", message: error.localizedDescription)
 
 			case .success(let authenticatedUser):
-				GitHub.handleReceivedEvents(page: page, login: authenticatedUser.login, with: { result in
+				GitHub.handleReceivedEvents(page: page, login: authenticatedUser.login, with: Handler { result in
 					switch result {
 					case .failure(let error):
 						debugPrint(error)
 
 					case .success(let events):
 						if page == nil {
-							self.currentPage = 0
-							self.events = events
+							self?.currentPage = 0
+							self?.events = events
+
+							DispatchQueue.main.async {
+								self?.tableView.reloadSections([0], with: .automatic)
+							}
 						}
 						else {
-							self.events.append(contentsOf: events)
+							self?.events.append(contentsOf: events)
+
+							DispatchQueue.main.async {
+								self?.tableView.reloadData()
+							}
 						}
 					}
 
@@ -76,13 +84,7 @@ class FeedViewController: UITableViewController {
 	}
 
 	private var currentPage = 1 as UInt
-	private var events: [GitHubEvent] = [] {
-		didSet {
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		}
-	}
+	private var events = [GitHubEvent]()
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return events.count
@@ -104,9 +106,9 @@ class FeedViewController: UITableViewController {
 			cell.textLabel?.numberOfLines = 0
 			cell.textLabel?.attributedText = attributedMessage
 
-			watchEvent.actor.handleAvatarImage(with: { image in
+			watchEvent.actor.handleAvatarImage(with: Handler { result in
 				DispatchQueue.main.async {
-					cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
+					cell.imageView?.image = (try? result.get())?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
 					cell.setNeedsLayout()
 				}
 			})
