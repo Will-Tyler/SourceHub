@@ -62,11 +62,6 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         getRepo()
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: view.frame.height / 2).isActive = true
     }
     
     func getRepo() {
