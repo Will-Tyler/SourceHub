@@ -146,6 +146,7 @@ class GitHub {
 				let repos = try JSONDecoder().decode([Repository].self, from: data)
 
 				handler(repos, nil)
+            }
 			catch {
 				handler(nil, error)
 			}

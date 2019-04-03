@@ -35,7 +35,6 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
         table.delegate = self
         table.dataSource = self
         table.register(RepoCell.self, forCellReuseIdentifier: RepoCell.cellID)
-        //table.estimatedRowHeight = 150
         table.rowHeight = 150
         
         return table
@@ -46,7 +45,11 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
         
         view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
+        
         getRepo()
+        tableView.insertSubview(refreshControl, at: 0)
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -62,6 +65,11 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         getRepo()
+    }
+    
+    @objc private func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        getRepo()
+        refreshControl.endRefreshing()
     }
     
     func getRepo() {
@@ -84,7 +92,6 @@ class ProfileViewController: ViewController, UITableViewDataSource, UITableViewD
         let repo = repos[indexPath.row]
 
         cell.repo = repo
-
 
         return cell
     }
