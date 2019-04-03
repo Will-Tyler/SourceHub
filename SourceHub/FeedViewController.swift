@@ -33,6 +33,8 @@ class FeedViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		view.backgroundColor = Colors.background
+
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: .valueChanged)
 
@@ -102,6 +104,8 @@ class FeedViewController: UITableViewController {
 			attributedMessage.append(boldDisplayLogin)
 			attributedMessage.append(NSAttributedString(string: " starred "))
 			attributedMessage.append(boldRepoName)
+
+			cell.backgroundColor = .clear
 
 			cell.textLabel?.numberOfLines = 0
 			cell.textLabel?.attributedText = attributedMessage
