@@ -21,7 +21,16 @@ extension GitHub {
 		let email: String
 		let bio: String
 
-		// TODO CodingKeys
+		private enum CodingKeys: String, CodingKey {
+			case login
+			case id
+			case avatarURL = "avatar_url"
+			case reposURL = "repos_url"
+			case name
+			case email
+			case bio
+		}
+
 	}
 
 }
