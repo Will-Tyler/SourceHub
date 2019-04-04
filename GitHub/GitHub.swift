@@ -124,6 +124,34 @@ class GitHub {
 		access = nil
 	}
 
+	static func handleRepositories(with handler: @escaping ([Repository]?, Error?)->()) {
+		guard let access = access else {
+			handler(nil, "GitHub user is not authenticated.")
+			return
+		}
+
+		let parameters = [
+			"access_token": access.token,
+			"visibility": "all",
+			"affiliation": "owner,collaborator",
+		]
+
+		HTTP.request(apiURL, endpoint: "user/repos", parameters: parameters, with: { (data, response, error) in
+			guard let data = data else {
+				handler(nil, error)
+				return
+			}
+
+			do {
+				let repos = try JSONDecoder().decode([Repository].self, from: data)
+
+				handler(repos, nil)
+            }
+			catch {
+				handler(nil, error)
+			}
+		})
+   }
 	/// Fetches the currently authenticated user from GitHub.
 	///
 	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.

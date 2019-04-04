@@ -19,6 +19,13 @@ extension GitHub {
 		let reposURL: URL
 
 		// TODO CodingKeys
+		private enum CodingKeys: String, CodingKey {
+			case login
+			case id
+			case url
+			case reposURL = "repos_url"
+		}
+
 	}
 
 }
