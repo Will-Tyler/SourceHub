@@ -12,6 +12,7 @@
 		4C197A41224EED5C002B1096 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4C197A40224EED5C002B1096 /* Podfile */; };
 		4C397EF5225566DD001C801B /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF4225566DD001C801B /* Handler.swift */; };
 		4C397EF72255710B001C801B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF62255710B001C801B /* Colors.swift */; };
+		4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF822557412001C801B /* EventTableViewCell.swift */; };
 		4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C6224C2C8400E00170 /* TabBarController.swift */; };
 		4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C8224C2E2D00E00170 /* UIViewController.swift */; };
 		4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CA224C2FFA00E00170 /* FeedViewController.swift */; };
@@ -46,6 +47,7 @@
 		4C197A40224EED5C002B1096 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4C397EF4225566DD001C801B /* Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		4C397EF62255710B001C801B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4C397EF822557412001C801B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		4C4286C6224C2C8400E00170 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4C4286C8224C2E2D00E00170 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4C4286CA224C2FFA00E00170 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
 				4C197A3E224EE531002B1096 /* CGSize.swift */,
 				4C397EF62255710B001C801B /* Colors.swift */,
+				4C397EF822557412001C801B /* EventTableViewCell.swift */,
 				4C4286CA224C2FFA00E00170 /* FeedViewController.swift */,
 				4C397EF4225566DD001C801B /* Handler.swift */,
 				4C8010DD2249912500596297 /* HTTP.swift */,
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */,
 				4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */,
 				4C8010DE2249912500596297 /* HTTP.swift in Sources */,
 				4CF32163222DF6C70034F1D9 /* SignInViewController.swift in Sources */,

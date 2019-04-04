@@ -28,7 +28,7 @@ class FeedViewController: UITableViewController {
 		super.loadView()
 
 		tableView.tableFooterView = UIView(frame: .zero)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+		tableView.register(EventTableViewCell.self, forCellReuseIdentifier: String(describing: EventTableViewCell.self))
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -93,30 +93,9 @@ class FeedViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let event = events[indexPath.row]
-		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventTableViewCell.self), for: indexPath) as! EventTableViewCell
 
-		if let watchEvent = event as? GitHub.WatchEvent {
-			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-			let attributedMessage = NSMutableAttributedString()
-			let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
-			let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
-
-			attributedMessage.append(boldDisplayLogin)
-			attributedMessage.append(NSAttributedString(string: " starred "))
-			attributedMessage.append(boldRepoName)
-
-			cell.backgroundColor = .clear
-
-			cell.textLabel?.numberOfLines = 0
-			cell.textLabel?.attributedText = attributedMessage
-
-			watchEvent.actor.handleAvatarImage(with: Handler { result in
-				DispatchQueue.main.async {
-					cell.imageView?.image = (try? result.get())?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
-					cell.setNeedsLayout()
-				}
-			})
-		}
+		cell.event = event
 
 		if indexPath.row == events.count-5, currentPage < 10 {
 			currentPage += 1
