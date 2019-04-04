@@ -99,6 +99,37 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4C397EFA22559033001C801B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C4286CA224C2FFA00E00170 /* FeedViewController.swift */,
+				4C4286CC224C304D00E00170 /* ProfileViewController.swift */,
+				4CF32162222DF6C70034F1D9 /* SignInViewController.swift */,
+				4C4286C6224C2C8400E00170 /* TabBarController.swift */,
+				4C4286C8224C2E2D00E00170 /* UIViewController.swift */,
+				4C4286CE224C31AF00E00170 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4C397EFB22559074001C801B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C197A3E224EE531002B1096 /* CGSize.swift */,
+				4C8010DF2249934F00596297 /* String.swift */,
+				4C8010DB224990F800596297 /* URL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C397EFC22559091001C801B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C397EF822557412001C801B /* EventTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4C7E7DF2224E90720095C4A8 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,20 +166,13 @@
 			isa = PBXGroup;
 			children = (
 				4CF32160222DF6C70034F1D9 /* AppDelegate.swift */,
-				4C197A3E224EE531002B1096 /* CGSize.swift */,
 				4C397EF62255710B001C801B /* Colors.swift */,
-				4C397EF822557412001C801B /* EventTableViewCell.swift */,
-				4C4286CA224C2FFA00E00170 /* FeedViewController.swift */,
 				4C397EF4225566DD001C801B /* Handler.swift */,
 				4C8010DD2249912500596297 /* HTTP.swift */,
 				4C197A3C224EE249002B1096 /* Macro.swift */,
-				4C4286CC224C304D00E00170 /* ProfileViewController.swift */,
-				4CF32162222DF6C70034F1D9 /* SignInViewController.swift */,
-				4C8010DF2249934F00596297 /* String.swift */,
-				4C4286C6224C2C8400E00170 /* TabBarController.swift */,
-				4C4286C8224C2E2D00E00170 /* UIViewController.swift */,
-				4C8010DB224990F800596297 /* URL.swift */,
-				4C4286CE224C31AF00E00170 /* ViewController.swift */,
+				4C397EFA22559033001C801B /* Controllers */,
+				4C397EFB22559074001C801B /* Extensions */,
+				4C397EFC22559091001C801B /* Views */,
 				4CF32167222DF6C80034F1D9 /* Assets.xcassets */,
 				4CF32169222DF6C80034F1D9 /* LaunchScreen.storyboard */,
 				4CF3216C222DF6C80034F1D9 /* Info.plist */,
