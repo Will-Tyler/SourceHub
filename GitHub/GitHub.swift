@@ -29,7 +29,7 @@ class GitHub {
 		else {
 			return nil
 		}
-	}() {
+		}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -124,9 +124,9 @@ class GitHub {
 		access = nil
 	}
 
-	static func handleRepositories(with handler: @escaping ([Repository]?, Error?)->()) {
+	static func handleRepositories(with handler: @escaping ([Repository]?, Swift.Error?)->()) {
 		guard let access = access else {
-			handler(nil, "GitHub user is not authenticated.")
+			handler(nil, Error.notAuthenticated)
 			return
 		}
 
@@ -138,7 +138,7 @@ class GitHub {
 
 		HTTP.request(apiURL, endpoint: "user/repos", parameters: parameters, with: { (data, response, error) in
 			guard let data = data else {
-				handler(nil, error)
+				handler(nil, error ?? Error.apiError)
 				return
 			}
 
@@ -146,12 +146,13 @@ class GitHub {
 				let repos = try JSONDecoder().decode([Repository].self, from: data)
 
 				handler(repos, nil)
-            }
+			}
 			catch {
 				handler(nil, error)
 			}
 		})
-   }
+	}
+
 	/// Fetches the currently authenticated user from GitHub.
 	///
 	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.

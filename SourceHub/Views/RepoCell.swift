@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class RepoCell: UITableViewCell {
 
 	private lazy var repoLabel: UILabel = {
