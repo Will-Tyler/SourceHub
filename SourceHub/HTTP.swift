@@ -14,7 +14,7 @@ class HTTP {
 	typealias Request = URLSessionDataTask
 
 	@discardableResult
-	static func request(method: HTTP.Request.Method = .get, _ baseURL: URL, endpoint: String? = "", headers: [String: String]? = nil, parameters: URL.Parameters? = nil, with handler: @escaping (Data?, URLResponse?, Error?)->()) -> HTTP.Request {
+	static func request(method: HTTP.Request.Method = .get, _ baseURL: URL, endpoint: String? = "", headers: [String: String]? = nil, parameters: URL.Parameters? = nil, body: Any? = nil, with handler: @escaping (Data?, URLResponse?, Error?)->()) -> HTTP.Request {
 		var url = baseURL
 
 		if let endpoint = endpoint {
@@ -34,6 +34,9 @@ class HTTP {
 			for (key, value) in headers {
 				request.setValue(value, forHTTPHeaderField: key)
 			}
+		}
+		if let body = body {
+			request.httpBody = try? JSONSerialization.data(withJSONObject: body)
 		}
 
 		let task = URLSession.shared.dataTask(with: request, completionHandler: handler)

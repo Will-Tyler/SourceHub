@@ -16,7 +16,6 @@ class RepoCell: UITableViewCell {
 
 		label.font = UIFont.systemFont(ofSize: 24)
 		label.numberOfLines = 1
-		label.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 		label.layer.cornerRadius = 5
 		label.layer.masksToBounds = true
 
@@ -27,7 +26,6 @@ class RepoCell: UITableViewCell {
 
 		label.font = UIFont.systemFont(ofSize: 12)
 		label.numberOfLines = 0
-		label.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 		label.layer.cornerRadius = 5
 		label.layer.masksToBounds = true
 
@@ -64,7 +62,6 @@ class RepoCell: UITableViewCell {
 	private func setupInitialLayout() {
 		let isPrivateLabel = UILabel()
 
-		isPrivateLabel.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 		isPrivateLabel.text = "Private"
 		isPrivateLabel.layer.cornerRadius = 5
 		isPrivateLabel.layer.masksToBounds = true

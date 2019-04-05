@@ -58,7 +58,8 @@ class GitHub {
 		var loginURL = URL(string: "https://github.com/login/oauth/authorize")!
 		let parameters = [
 			"client_id": clientID,
-			"redirect_uri": "sourcehub://github-callback"
+			"redirect_uri": "sourcehub://github-callback",
+			"scope": "user repo"
 		]
 
 		loginURL.parameters = parameters
