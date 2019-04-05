@@ -19,7 +19,7 @@ extension GitHub {
 		let fullName: String
 		let owner: Owner
 		let isPrivate: Bool
-		let description: String
+		let description: String?
 		let isFork: Bool
 		let url: URL
 		let defaultBranch: String
