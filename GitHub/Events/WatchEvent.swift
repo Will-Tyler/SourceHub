@@ -66,11 +66,16 @@ extension GitHub.WatchEvent {
 		let url: URL
 		let avatarURL: URL
 
-		func handleAvatarImage(with handler: @escaping (UIImage?)->()) {
+		func handleAvatarImage(with handler: Handler<UIImage, Swift.Error>) {
 			let request = URLRequest(url: avatarURL)
 
 			imageDownloader.download(request, completion: { (dataResponse) in
-				handler(dataResponse.value)
+				if let image = dataResponse.value {
+					handler(.success(image))
+				}
+				else {
+					handler(.failure(dataResponse.error ?? GitHub.Error.apiError))
+				}
 			})
 		}
 

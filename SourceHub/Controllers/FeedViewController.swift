@@ -28,10 +28,12 @@ class FeedViewController: UITableViewController {
 		super.loadView()
 
 		tableView.tableFooterView = UIView(frame: .zero)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(EventTableViewCell.self, forCellReuseIdentifier: String(describing: EventTableViewCell.self))
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		view.backgroundColor = Colors.background
 
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: .valueChanged)
@@ -48,58 +50,52 @@ class FeedViewController: UITableViewController {
 	}
 
 	private func fetchEvents(page: UInt? = nil, completion: (()->())? = nil) {
-		GitHub.handleReceivedEvents(page: page, with: { (events, error) in
-			if let error = error {
-				debugPrint(error)
-			}
-			if let events = events {
-				if page == nil {
-					self.currentPage = 0
-					self.events = events
-				}
-				else {
-					self.events.append(contentsOf: events)
-				}
-			}
+		GitHub.handleAuthenticatedUser(with: Handler { [weak self] result in
+			switch result {
+			case .failure(let error):
+				self?.alertUser(title: "Error Fetching Events", message: error.localizedDescription)
 
-			completion?()
+			case .success(let authenticatedUser):
+				GitHub.handleReceivedEvents(page: page, login: authenticatedUser.login, with: Handler { result in
+					switch result {
+					case .failure(let error):
+						debugPrint(error)
+
+					case .success(let events):
+						if page == nil {
+							self?.currentPage = 0
+							self?.events = events
+
+							DispatchQueue.main.async {
+								self?.tableView.reloadSections([0], with: .automatic)
+							}
+						}
+						else {
+							self?.events.append(contentsOf: events)
+
+							DispatchQueue.main.async {
+								self?.tableView.reloadData()
+							}
+						}
+					}
+
+					completion?()
+				})
+			}
 		})
 	}
 
 	private var currentPage = 1 as UInt
-	private var events: [GitHubEvent] = [] {
-		didSet {
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		}
-	}
+	private var events = [GitHubEvent]()
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return events.count
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let event = events[indexPath.row]
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventTableViewCell.self), for: indexPath) as! EventTableViewCell
 
-		if let watchEvent = event as? GitHub.WatchEvent {
-			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-			let attributedMessage = NSMutableAttributedString()
-			let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
-			let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
-
-			attributedMessage.append(boldDisplayLogin)
-			attributedMessage.append(NSAttributedString(string: " starred "))
-			attributedMessage.append(boldRepoName)
-
-			cell.textLabel?.numberOfLines = 0
-			cell.textLabel?.attributedText = attributedMessage
-
-			watchEvent.actor.handleAvatarImage(with: { image in
-				cell.imageView?.image = image?.af_imageScaled(to: CGSize(square: 32)).af_imageRounded(withCornerRadius: 4)
-				cell.setNeedsLayout()
-			})
-		}
+		cell.event = event
 
 		if indexPath.row == events.count-5, currentPage < 10 {
 			currentPage += 1

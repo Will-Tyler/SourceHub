@@ -29,7 +29,7 @@ class GitHub {
 		else {
 			return nil
 		}
-	}() {
+		}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -41,7 +41,7 @@ class GitHub {
 	}
 
 	/// A queue of completion handlers that need to be executed with authentication is completed.
-	private static var authenticationQueue = [(Error?)->()]()
+	private static var authenticationQueue = [(Swift.Error?)->()]()
 
 	/// Return whether a user is authenticated in GitHub.
 	static var isAuthenticated: Bool {
@@ -54,7 +54,7 @@ class GitHub {
 	///
 	/// - Parameters:
 	///   - completion: A completion handler that will be passed an Error if an error occured. Guarenteed to execute exactly once.
-	static func initiateAuthentication(completion: @escaping (Error?)->()) {
+	static func initiateAuthentication(completion: @escaping (Swift.Error?)->()) {
 		var loginURL = URL(string: "https://github.com/login/oauth/authorize")!
 		let parameters = [
 			"client_id": clientID,
@@ -68,7 +68,7 @@ class GitHub {
 			UIApplication.shared.open(loginURL)
 		}
 		else {
-			completion("SourceHub is unable to open the GitHub authentication url.")
+			completion(Error.cannotOpenAuthenticationURL)
 		}
 	}
 
@@ -82,7 +82,7 @@ class GitHub {
 		}
 		guard let code = url.parameters?["code"] as? String else {
 			while !authenticationQueue.isEmpty {
-				authenticationQueue.removeFirst()("SourceHub was unable to extract the authentication code from the GitHub callback.")
+				authenticationQueue.removeFirst()(Error.couldNotExtractCode)
 			}
 
 			return
@@ -124,9 +124,9 @@ class GitHub {
 		access = nil
 	}
 
-	static func handleRepositories(with handler: @escaping ([Repository]?, Error?)->()) {
+	static func handleRepositories(with handler: @escaping ([Repository]?, Swift.Error?)->()) {
 		guard let access = access else {
-			handler(nil, "GitHub user is not authenticated.")
+			handler(nil, Error.notAuthenticated)
 			return
 		}
 
@@ -138,7 +138,7 @@ class GitHub {
 
 		HTTP.request(apiURL, endpoint: "user/repos", parameters: parameters, with: { (data, response, error) in
 			guard let data = data else {
-				handler(nil, error)
+				handler(nil, error ?? Error.apiError)
 				return
 			}
 
@@ -146,34 +146,35 @@ class GitHub {
 				let repos = try JSONDecoder().decode([Repository].self, from: data)
 
 				handler(repos, nil)
-            }
+			}
 			catch {
 				handler(nil, error)
 			}
 		})
-   }
+	}
+
 	/// Fetches the currently authenticated user from GitHub.
 	///
 	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.
-	static func handleAuthenticatedUser(with handler: @escaping (AuthenticatedUser?, Error?)->()) {
+	static func handleAuthenticatedUser(with handler: Handler<AuthenticatedUser, Swift.Error>) {
 		guard let access = access else {
-			handler(nil, "No user is authenticated for GitHub.")
+			handler(.failure(Error.notAuthenticated))
 			return
 		}
 
 		HTTP.request(apiURL, endpoint: "user", headers: ["Authorization": "token \(access.token)"], with: { (data, response, error) in
 			guard let data = data else {
-				handler(nil, error)
+				handler(.failure(error ?? Error.apiError))
 				return
 			}
 
 			do {
 				let user = try JSONDecoder().decode(AuthenticatedUser.self, from: data)
 
-				handler(user, nil)
+				handler(.success(user))
 			}
 			catch {
-				handler(nil, error)
+				handler(.failure(error))
 			}
 		})
 	}
@@ -184,10 +185,11 @@ class GitHub {
 	///
 	/// - Parameters:
 	///   - page: the page of events to fetch
+	///   - login: the username of the GitHub user to fetch events for
 	///   - handler: a handler that is passed an array of GitHubEvents or an error if one occurs
-	static func handleReceivedEvents(page: UInt? = nil, with handler: @escaping ([GitHubEvent]?, Error?)->()) {
+	static func handleReceivedEvents(page: UInt? = nil, login: String, with handler: Handler<[GitHubEvent], Swift.Error>) {
 		guard let access = access else {
-			handler(nil, "No GitHub user signed in.")
+			handler(.failure(Error.notAuthenticated))
 			return
 		}
 
@@ -201,27 +203,20 @@ class GitHub {
 			parameters = nil
 		}
 
-		handleAuthenticatedUser(with: { (authenticatedUser, error) in
-			guard let authenticatedUser = authenticatedUser else {
-				handler(nil, error)
+		HTTP.request(apiURL, endpoint: "users/\(login)/received_events", headers: ["Authorization": "token \(access.token)"], parameters: parameters, with: { (data, response, error) in
+			guard let data = data else {
+				handler(.failure(error ?? Error.apiError))
 				return
 			}
 
-			HTTP.request(apiURL, endpoint: "users/\(authenticatedUser.login)/received_events", headers: ["Authorization": "token \(access.token)"], parameters: parameters, with: { (data, response, error) in
-				guard let data = data else {
-					handler(nil, error)
-					return
-				}
+			do {
+				let events = try JSONDecoder().decode([EventDecoder].self, from: data).compactMap({ $0.event })
 
-				do {
-					let events = try JSONDecoder().decode([EventDecoder].self, from: data).compactMap({ $0.event })
-
-					handler(events, nil)
-				}
-				catch {
-					handler(nil, error)
-				}
-			})
+				handler(.success(events))
+			}
+			catch {
+				handler(.failure(error))
+			}
 		})
 	}
 
