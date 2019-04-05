@@ -124,9 +124,9 @@ class GitHub {
 		access = nil
 	}
 
-	static func handleRepositories(with handler: @escaping ([Repository]?, Swift.Error?)->()) {
+	static func handleRepositories(with handler: Handler<[Repository], Swift.Error>) {
 		guard let access = access else {
-			handler(nil, Error.notAuthenticated)
+			handler(.failure(Error.notAuthenticated))
 			return
 		}
 
@@ -138,17 +138,17 @@ class GitHub {
 
 		HTTP.request(apiURL, endpoint: "user/repos", parameters: parameters, with: { (data, response, error) in
 			guard let data = data else {
-				handler(nil, error ?? Error.apiError)
+				handler(.failure(error ?? Error.apiError))
 				return
 			}
 
 			do {
 				let repos = try JSONDecoder().decode([Repository].self, from: data)
 
-				handler(repos, nil)
+				handler(.success(repos))
 			}
 			catch {
-				handler(nil, error)
+				handler(.failure(error))
 			}
 		})
 	}
