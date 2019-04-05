@@ -14,7 +14,7 @@ class GitHub {
 	private static let apiURL = URL(string: "https://api.github.com/")!
 	private static let clientID = "2d39851172caae950d95"
 	private static let clientSecret: String = {
-		// Note that loading the client secret on the client is not secure.
+		// Note that loading the client secret on the client is not secure for a production release.
 		// Were this application to be published, a server would be needed for token swapping.
 		let url = Bundle.main.url(forResource: "Client Secret", withExtension: nil)!
 		let contents = FileManager.default.contents(atPath: url.path)!
@@ -29,7 +29,7 @@ class GitHub {
 		else {
 			return nil
 		}
-		}() {
+	}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -125,6 +125,9 @@ class GitHub {
 		access = nil
 	}
 
+	/// Fetches the repositories belonging to the currently signed in user.
+	///
+	/// - Parameter handler: a Handler that will be passed the user's repositories or an error if one occurs.
 	static func handleRepositories(with handler: Handler<[Repository], Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))
@@ -156,7 +159,7 @@ class GitHub {
 
 	/// Fetches the currently authenticated user from GitHub.
 	///
-	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.
+	/// - Parameter handler: a Handler that will be passed the authenticated user or an error if one occurs.
 	static func handleAuthenticatedUser(with handler: Handler<AuthenticatedUser, Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))
@@ -187,7 +190,7 @@ class GitHub {
 	/// - Parameters:
 	///   - page: the page of events to fetch
 	///   - login: the username of the GitHub user to fetch events for
-	///   - handler: a handler that is passed an array of GitHubEvents or an error if one occurs
+	///   - handler: a Handler that is passed an array of GitHubEvents or an error if one occurs
 	static func handleReceivedEvents(page: UInt? = nil, login: String, with handler: Handler<[GitHubEvent], Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))
