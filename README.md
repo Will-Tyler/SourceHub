@@ -5,7 +5,7 @@
 A GitHub client application built for iOS.
 
 ### Sprint 2
-<img src='Sprint2.gif' width='' alt='Video Walkthrough' />
+<img src='Sprint2.gif' width='380' alt='Video Walkthrough' />
 
 ### Sprint 1
 <img src='Sprint1.gif' width='' alt='Video Walkthrough' />
