@@ -29,6 +29,8 @@ class ProfileViewController: UIPageViewController, UIPageViewControllerDelegate,
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		view.backgroundColor = .white
+
 		delegate = self
 		dataSource = self
 
