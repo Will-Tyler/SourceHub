@@ -4,6 +4,10 @@
 
 A GitHub client application built for iOS.
 
+### Sprint 2
+<img src='Spring2.gif' width='' alt='Video Walkthrough' />
+
+### Sprint 1
 <img src='Sprint1.gif' width='' alt='Video Walkthrough' />
 
 ## 1. User Stories (Required and Optional)
