@@ -38,6 +38,11 @@ extension GitHub {
 			self.payload = try container.decode(Payload.self, forKey: .payload)
 			self.isPublic = try container.decode(Bool.self, forKey: .isPublic)
 			self.createdAt = try container.decode(String.self, forKey: .createdAt)
+
+			guard type == .watch else {
+				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
+				throw DecodingError.typeMismatch(WatchEvent.self, context)
+			}
 		}
 
 		private enum CodingKeys: String, CodingKey {

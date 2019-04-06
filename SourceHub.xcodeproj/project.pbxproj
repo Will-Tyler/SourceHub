@@ -13,10 +13,13 @@
 		4C397EF72255710B001C801B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF62255710B001C801B /* Colors.swift */; };
 		4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF822557412001C801B /* EventTableViewCell.swift */; };
 		4C3CD6552257FBB000F1D023 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD6542257FBB000F1D023 /* RepoCell.swift */; };
+		4C3CD65A225807B300F1D023 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD659225807B300F1D023 /* ProfileViewController.swift */; };
+		4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD65B225808D200F1D023 /* ReposViewController.swift */; };
+		4C3CD65E22581E8000F1D023 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD65D22581E8000F1D023 /* ImageDownloader.swift */; };
 		4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C6224C2C8400E00170 /* TabBarController.swift */; };
 		4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C8224C2E2D00E00170 /* UIViewController.swift */; };
 		4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CA224C2FFA00E00170 /* FeedViewController.swift */; };
-		4C4286CD224C304D00E00170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CC224C304D00E00170 /* ProfileViewController.swift */; };
+		4C4286CD224C304D00E00170 /* OverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CC224C304D00E00170 /* OverViewController.swift */; };
 		4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CE224C31AF00E00170 /* ViewController.swift */; };
 		4C4286D1224C387E00E00170 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C4286D0224C387E00E00170 /* Client Secret */; };
 		4C4FCA772252D208008A6A4D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FCA762252D208008A6A4D /* Error.swift */; };
@@ -48,10 +51,13 @@
 		4C397EF62255710B001C801B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4C397EF822557412001C801B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		4C3CD6542257FBB000F1D023 /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		4C3CD659225807B300F1D023 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4C3CD65B225808D200F1D023 /* ReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
+		4C3CD65D22581E8000F1D023 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		4C4286C6224C2C8400E00170 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4C4286C8224C2E2D00E00170 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4C4286CA224C2FFA00E00170 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		4C4286CC224C304D00E00170 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4C4286CC224C304D00E00170 /* OverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewController.swift; sourceTree = "<group>"; };
 		4C4286CE224C31AF00E00170 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C4286D0224C387E00E00170 /* Client Secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
 		4C4FCA762252D208008A6A4D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -103,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4286CA224C2FFA00E00170 /* FeedViewController.swift */,
-				4C4286CC224C304D00E00170 /* ProfileViewController.swift */,
+				4C3CD6582258078300F1D023 /* Profile */,
 				4CF32162222DF6C70034F1D9 /* SignInViewController.swift */,
 				4C4286C6224C2C8400E00170 /* TabBarController.swift */,
 				4C4286C8224C2E2D00E00170 /* UIViewController.swift */,
@@ -116,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				4C197A3E224EE531002B1096 /* CGSize.swift */,
+				4C3CD65D22581E8000F1D023 /* ImageDownloader.swift */,
 				4C8010DF2249934F00596297 /* String.swift */,
 				4C8010DB224990F800596297 /* URL.swift */,
 			);
@@ -137,6 +144,16 @@
 				18A5D2A8224D6E80005A7D8B /* RepoCell.swift */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		4C3CD6582258078300F1D023 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4C4286CC224C304D00E00170 /* OverViewController.swift */,
+				4C3CD659225807B300F1D023 /* ProfileViewController.swift */,
+				4C3CD65B225808D200F1D023 /* ReposViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		4C7E7DF2224E90720095C4A8 /* Events */ = {
@@ -338,14 +355,16 @@
 			files = (
 				4C3CD6552257FBB000F1D023 /* RepoCell.swift in Sources */,
 				4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */,
+				4C3CD65E22581E8000F1D023 /* ImageDownloader.swift in Sources */,
 				4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */,
 				4C8010DE2249912500596297 /* HTTP.swift in Sources */,
 				4CF32163222DF6C70034F1D9 /* SignInViewController.swift in Sources */,
 				4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */,
 				4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */,
-				4C4286CD224C304D00E00170 /* ProfileViewController.swift in Sources */,
+				4C4286CD224C304D00E00170 /* OverViewController.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
 				4C8010E02249934F00596297 /* String.swift in Sources */,
+				4C3CD65A225807B300F1D023 /* ProfileViewController.swift in Sources */,
 				4C7E7DF1224E81B90095C4A8 /* Event.swift in Sources */,
 				4C397EF5225566DD001C801B /* Handler.swift in Sources */,
 				4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */,
@@ -353,6 +372,7 @@
 				4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */,
 				4C397EF72255710B001C801B /* Colors.swift in Sources */,
 				4C197A3F224EE531002B1096 /* CGSize.swift in Sources */,
+				4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */,
 				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
 				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
 				4C8010DC224990F800596297 /* URL.swift in Sources */,

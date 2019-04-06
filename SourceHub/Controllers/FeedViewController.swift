@@ -53,7 +53,11 @@ class FeedViewController: UITableViewController {
 		GitHub.handleAuthenticatedUser(with: Handler { [weak self] result in
 			switch result {
 			case .failure(let error):
-				self?.alertUser(title: "Error Fetching Events", message: error.localizedDescription)
+				debugPrint(error)
+
+				DispatchQueue.main.async {
+					self?.alertUser(title: "Error Fetching Events", message: error.localizedDescription)
+				}
 
 			case .success(let authenticatedUser):
 				GitHub.handleReceivedEvents(page: page, login: authenticatedUser.login, with: Handler { result in

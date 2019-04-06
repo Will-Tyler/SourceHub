@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 
 class GitHub {
@@ -14,7 +15,7 @@ class GitHub {
 	private static let apiURL = URL(string: "https://api.github.com/")!
 	private static let clientID = "2d39851172caae950d95"
 	private static let clientSecret: String = {
-		// Note that loading the client secret on the client is not secure.
+		// Note that loading the client secret on the client is not secure for a production release.
 		// Were this application to be published, a server would be needed for token swapping.
 		let url = Bundle.main.url(forResource: "Client Secret", withExtension: nil)!
 		let contents = FileManager.default.contents(atPath: url.path)!
@@ -29,7 +30,7 @@ class GitHub {
 		else {
 			return nil
 		}
-		}() {
+	}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -42,6 +43,7 @@ class GitHub {
 
 	/// A queue of completion handlers that need to be executed with authentication is completed.
 	private static var authenticationQueue = [(Swift.Error?)->()]()
+	private static var safariViewController: SFSafariViewController?
 
 	/// Return whether a user is authenticated in GitHub.
 	static var isAuthenticated: Bool {
@@ -58,12 +60,24 @@ class GitHub {
 		var loginURL = URL(string: "https://github.com/login/oauth/authorize")!
 		let parameters = [
 			"client_id": clientID,
-			"redirect_uri": "sourcehub://github-callback"
+			"redirect_uri": "sourcehub://github-callback",
+			"scope": "user repo"
 		]
 
 		loginURL.parameters = parameters
 
-		if UIApplication.shared.canOpenURL(loginURL) {
+		if var viewController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presented = viewController.presentedViewController {
+				viewController = presented
+			}
+
+			let safariViewController = SFSafariViewController(url: loginURL)
+
+			GitHub.safariViewController = safariViewController
+			viewController.present(safariViewController, animated: true)
+			authenticationQueue.append(completion)
+		}
+		else if UIApplication.shared.canOpenURL(loginURL) {
 			authenticationQueue.append(completion)
 			UIApplication.shared.open(loginURL)
 		}
@@ -80,6 +94,10 @@ class GitHub {
 		guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), components.scheme == "sourcehub", components.host == "github-callback" else {
 			return
 		}
+
+		safariViewController?.dismiss(animated: true)
+		safariViewController = nil
+
 		guard let code = url.parameters?["code"] as? String else {
 			while !authenticationQueue.isEmpty {
 				authenticationQueue.removeFirst()(Error.couldNotExtractCode)
@@ -124,9 +142,12 @@ class GitHub {
 		access = nil
 	}
 
-	static func handleRepositories(with handler: @escaping ([Repository]?, Swift.Error?)->()) {
+	/// Fetches the repositories belonging to the currently signed in user.
+	///
+	/// - Parameter handler: a Handler that will be passed the user's repositories or an error if one occurs.
+	static func handleRepositories(with handler: Handler<[Repository], Swift.Error>) {
 		guard let access = access else {
-			handler(nil, Error.notAuthenticated)
+			handler(.failure(Error.notAuthenticated))
 			return
 		}
 
@@ -138,24 +159,24 @@ class GitHub {
 
 		HTTP.request(apiURL, endpoint: "user/repos", parameters: parameters, with: { (data, response, error) in
 			guard let data = data else {
-				handler(nil, error ?? Error.apiError)
+				handler(.failure(error ?? Error.apiError))
 				return
 			}
 
 			do {
 				let repos = try JSONDecoder().decode([Repository].self, from: data)
 
-				handler(repos, nil)
+				handler(.success(repos))
 			}
 			catch {
-				handler(nil, error)
+				handler(.failure(error))
 			}
 		})
 	}
 
 	/// Fetches the currently authenticated user from GitHub.
 	///
-	/// - Parameter handler: a handler that will be passed the authenticated user or an error if one occurs.
+	/// - Parameter handler: a Handler that will be passed the authenticated user or an error if one occurs.
 	static func handleAuthenticatedUser(with handler: Handler<AuthenticatedUser, Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))
@@ -186,7 +207,7 @@ class GitHub {
 	/// - Parameters:
 	///   - page: the page of events to fetch
 	///   - login: the username of the GitHub user to fetch events for
-	///   - handler: a handler that is passed an array of GitHubEvents or an error if one occurs
+	///   - handler: a Handler that is passed an array of GitHubEvents or an error if one occurs
 	static func handleReceivedEvents(page: UInt? = nil, login: String, with handler: Handler<[GitHubEvent], Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))

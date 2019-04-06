@@ -14,9 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
+	private func setupAppearance() {
+		UINavigationBar.appearance().prefersLargeTitles = true
+
+		UIPageControl.appearance().pageIndicatorTintColor = .gray
+		UIPageControl.appearance().currentPageIndicatorTintColor = .black
+	}
+
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-		UINavigationBar.appearance().prefersLargeTitles = true
+		setupAppearance()
 		
 		let tabBarController = TabBarController()
 
