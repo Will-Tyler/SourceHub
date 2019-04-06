@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 
 class GitHub {
@@ -42,6 +43,7 @@ class GitHub {
 
 	/// A queue of completion handlers that need to be executed with authentication is completed.
 	private static var authenticationQueue = [(Swift.Error?)->()]()
+	private static var safariViewController: SFSafariViewController?
 
 	/// Return whether a user is authenticated in GitHub.
 	static var isAuthenticated: Bool {
@@ -64,7 +66,18 @@ class GitHub {
 
 		loginURL.parameters = parameters
 
-		if UIApplication.shared.canOpenURL(loginURL) {
+		if var viewController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presented = viewController.presentedViewController {
+				viewController = presented
+			}
+
+			let safariViewController = SFSafariViewController(url: loginURL)
+
+			GitHub.safariViewController = safariViewController
+			viewController.present(safariViewController, animated: true)
+			authenticationQueue.append(completion)
+		}
+		else if UIApplication.shared.canOpenURL(loginURL) {
 			authenticationQueue.append(completion)
 			UIApplication.shared.open(loginURL)
 		}
@@ -81,6 +94,10 @@ class GitHub {
 		guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), components.scheme == "sourcehub", components.host == "github-callback" else {
 			return
 		}
+
+		safariViewController?.dismiss(animated: true)
+		safariViewController = nil
+
 		guard let code = url.parameters?["code"] as? String else {
 			while !authenticationQueue.isEmpty {
 				authenticationQueue.removeFirst()(Error.couldNotExtractCode)

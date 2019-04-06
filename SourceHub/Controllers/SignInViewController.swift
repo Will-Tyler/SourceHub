@@ -52,12 +52,13 @@ class SignInViewController: ViewController {
 	}
 
 	@objc private func signInButtonAction() {
-		GitHub.initiateAuthentication(completion: { error in
+		GitHub.initiateAuthentication(completion: { [weak self] error in
 			if let error = error {
-				self.alertUser(title: "Authentication Error", message: error.localizedDescription)
+				debugPrint(error)
+				self?.alertUser(title: "Authentication Error", message: error.localizedDescription)
 			}
 			else {
-				self.dismiss(animated: true)
+				self?.dismiss(animated: true)
 			}
 		})
 	}
