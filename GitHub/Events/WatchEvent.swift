@@ -38,6 +38,11 @@ extension GitHub {
 			self.payload = try container.decode(Payload.self, forKey: .payload)
 			self.isPublic = try container.decode(Bool.self, forKey: .isPublic)
 			self.createdAt = try container.decode(String.self, forKey: .createdAt)
+
+			guard type == .watch else {
+				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
+				throw DecodingError.typeMismatch(WatchEvent.self, context)
+			}
 		}
 
 		private enum CodingKeys: String, CodingKey {
@@ -66,11 +71,16 @@ extension GitHub.WatchEvent {
 		let url: URL
 		let avatarURL: URL
 
-		func handleAvatarImage(with handler: @escaping (UIImage?)->()) {
+		func handleAvatarImage(with handler: Handler<UIImage, Swift.Error>) {
 			let request = URLRequest(url: avatarURL)
 
 			imageDownloader.download(request, completion: { (dataResponse) in
-				handler(dataResponse.value)
+				if let image = dataResponse.value {
+					handler(.success(image))
+				}
+				else {
+					handler(.failure(dataResponse.error ?? GitHub.Error.apiError))
+				}
 			})
 		}
 

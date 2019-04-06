@@ -12,5 +12,5 @@ import AlamofireImage
 
 // Use this file for global variables.
 
-/// Use this to download images. This will automatically store them.
+/// Use this to download images. This will automatically store them on the device.
 let imageDownloader = ImageDownloader()
