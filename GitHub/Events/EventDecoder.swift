@@ -32,6 +32,7 @@ extension GitHub {
 			event = try? container.decode(CreateEvent.self)
 			event = try? container.decode(DeleteEvent.self)
 			event = try? container.decode(ForkEvent.self)
+			event = try? container.decode(IssueCommentEvent.self)
 			event = try? container.decode(IssuesEvent.self)
 			event = try? container.decode(MemberEvent.self)
 			event = try? container.decode(PullRequestEvent.self)

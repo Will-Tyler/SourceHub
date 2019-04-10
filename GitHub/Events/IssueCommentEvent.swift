@@ -1,5 +1,5 @@
 //
-//  IssuesEvent.swift
+//  IssueCommentEvent.swift
 //  SourceHub
 //
 //  Created by Will Tyler on 4/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 extension GitHub {
 
-	struct IssuesEvent: Codable, GitHubEvent {
+	struct IssueCommentEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .issues else {
+			guard type == .issueComment else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(IssuesEvent.self, context)
+				throw DecodingError.typeMismatch(IssueCommentEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,11 +61,27 @@ extension GitHub {
 }
 
 
-extension GitHub.IssuesEvent {
+extension GitHub.IssueCommentEvent {
 
 	struct Payload: Codable {
+
 		let action: String
 		let issue: GitHub.Issue
+		let comment: Comment
+
+	}
+
+}
+
+
+extension GitHub.IssueCommentEvent.Payload {
+
+	struct Comment: Codable {
+
+		let url: URL
+		let id: UInt
+		let body: String
+
 	}
 
 }
