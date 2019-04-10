@@ -23,6 +23,7 @@
 		4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CE224C31AF00E00170 /* ViewController.swift */; };
 		4C4286D1224C387E00E00170 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4C4286D0224C387E00E00170 /* Client Secret */; };
 		4C4FCA772252D208008A6A4D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FCA762252D208008A6A4D /* Error.swift */; };
+		4C5962FB225E54220020649A /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5962FA225E54220020649A /* PushEvent.swift */; };
 		4C7E7DF1224E81B90095C4A8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF0224E81B90095C4A8 /* Event.swift */; };
 		4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */; };
 		4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */; };
@@ -61,6 +62,7 @@
 		4C4286CE224C31AF00E00170 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C4286D0224C387E00E00170 /* Client Secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
 		4C4FCA762252D208008A6A4D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		4C5962FA225E54220020649A /* PushEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		4C7E7DF0224E81B90095C4A8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEvent.swift; sourceTree = "<group>"; };
 		4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDecoder.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				4C7E7DF0224E81B90095C4A8 /* Event.swift */,
 				4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */,
+				4C5962FA225E54220020649A /* PushEvent.swift */,
 				4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */,
 			);
 			path = Events;
@@ -370,6 +373,7 @@
 				4CFEEBD1224050F500487DA0 /* GitHub.swift in Sources */,
 				4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */,
 				4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */,
+				4C5962FB225E54220020649A /* PushEvent.swift in Sources */,
 				4C397EF72255710B001C801B /* Colors.swift in Sources */,
 				4C197A3F224EE531002B1096 /* CGSize.swift in Sources */,
 				4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */,

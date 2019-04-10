@@ -6,7 +6,7 @@
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 extension GitHub {
@@ -57,6 +57,47 @@ extension GitHub {
 		case team = "TeamEvent"
 		case teamAdd = "TeamAddEvent"
 		case watch = "WatchEvent"
+
+	}
+
+	struct Actor: Codable {
+
+		let id: Int
+		let login: String
+		let displayLogin: String
+		let gravatarID: String
+		let url: URL
+		let avatarURL: URL
+
+		func handleAvatarImage(with handler: Handler<UIImage, Swift.Error>) {
+			let request = URLRequest(url: avatarURL)
+
+			imageDownloader.download(request, completion: { (dataResponse) in
+				if let image = dataResponse.value {
+					handler(.success(image))
+				}
+				else {
+					handler(.failure(dataResponse.error ?? GitHub.Error.apiError))
+				}
+			})
+		}
+
+		private enum CodingKeys: String, CodingKey {
+			case id
+			case login
+			case displayLogin = "display_login"
+			case gravatarID = "gravatar_id"
+			case url
+			case avatarURL = "avatar_url"
+		}
+
+	}
+
+	struct Repo: Codable {
+
+		let id: Int
+		let name: String
+		let url: URL
 
 	}
 
