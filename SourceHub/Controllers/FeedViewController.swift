@@ -101,7 +101,7 @@ class FeedViewController: UITableViewController {
 
 		cell.event = event
 
-		if indexPath.row == events.count-5, currentPage < 10 {
+		if indexPath.row == max(0, events.count-5), currentPage < 10 {
 			currentPage += 1
 			fetchEvents(page: currentPage)
 		}
