@@ -30,16 +30,17 @@ extension GitHub {
 			let container = try decoder.singleValueContainer()
 
 			event = try? container.decode(CreateEvent.self)
+			event = try? container.decode(MemberEvent.self)
 			event = try? container.decode(PushEvent.self)
 			event = try? container.decode(WatchEvent.self)
 
 			// For use when all known event types are handled.
-//			if event == nil {
-//				let simpleEvent = try container.decode(SimpleEvent.self)
-//				let context = DecodingError.Context(codingPath: container.codingPath, debugDescription: "Unable to decode event with type \"\(simpleEvent.type)\"")
-//
-//				throw DecodingError.typeMismatch(GitHubEvent.self, context)
-//			}
+			if event == nil {
+				let simpleEvent = try container.decode(SimpleEvent.self)
+				let context = DecodingError.Context(codingPath: container.codingPath, debugDescription: "Unable to decode event with type \"\(simpleEvent.type)\"")
+
+				throw DecodingError.typeMismatch(GitHubEvent.self, context)
+			}
 		}
 
 	}

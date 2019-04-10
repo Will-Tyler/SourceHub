@@ -28,7 +28,7 @@ class FeedViewController: UITableViewController {
 		super.loadView()
 
 		tableView.tableFooterView = UIView(frame: .zero)
-		tableView.register(EventTableViewCell.self, forCellReuseIdentifier: String(describing: EventTableViewCell.self))
+		tableView.register(EventTableViewCell.self)
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -65,7 +65,9 @@ class FeedViewController: UITableViewController {
 					case .failure(let error):
 						debugPrint(error)
 
-					case .success(let events):
+					case .success(var events):
+						events.removeAll(where: { $0 is GitHub.MemberEvent })
+
 						if page == nil {
 							self?.currentPage = 0
 							self?.events = events
@@ -97,7 +99,7 @@ class FeedViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let event = events[indexPath.row]
-		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EventTableViewCell.self), for: indexPath) as! EventTableViewCell
+		let cell = tableView.dequeueReusableCell(ofType: EventTableViewCell.self, for: indexPath) as! EventTableViewCell
 
 		cell.event = event
 
