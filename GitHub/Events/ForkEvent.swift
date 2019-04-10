@@ -1,5 +1,5 @@
 //
-//  MemberEvent.swift
+//  ForkEvent.swift
 //  SourceHub
 //
 //  Created by Will Tyler on 4/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 extension GitHub {
 
-	struct MemberEvent: Codable, GitHubEvent {
+	struct ForkEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .member else {
+			guard type == .fork else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(MemberEvent.self, context)
+				throw DecodingError.typeMismatch(ForkEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,34 +61,27 @@ extension GitHub {
 }
 
 
-extension GitHub.MemberEvent {
+extension GitHub.ForkEvent {
 
 	struct Payload: Codable {
-
-		let member: Member
-		let action: String
-
+		let forkee: Forkee
 	}
 
 }
 
 
-extension GitHub.MemberEvent.Payload {
+extension GitHub.ForkEvent.Payload {
 
-	struct Member: Codable {
+	struct Forkee: Codable {
 
-		let login: String
-		let id: Int
-		let nodeID: String
-		let avatarURL: URL
-		let type: String
+		let id: UInt
+		let name: String
+		let fullName: String
 
 		private enum CodingKeys: String, CodingKey {
-			case login
 			case id
-			case nodeID = "node_id"
-			case avatarURL = "avatar_url"
-			case type
+			case name
+			case fullName = "full_name"
 		}
 
 	}

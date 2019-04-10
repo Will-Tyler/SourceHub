@@ -30,7 +30,9 @@ extension GitHub {
 			let container = try decoder.singleValueContainer()
 
 			event = try? container.decode(CreateEvent.self)
+			event = try? container.decode(ForkEvent.self)
 			event = try? container.decode(MemberEvent.self)
+			event = try? container.decode(PullRequestEvent.self)
 			event = try? container.decode(PushEvent.self)
 			event = try? container.decode(WatchEvent.self)
 

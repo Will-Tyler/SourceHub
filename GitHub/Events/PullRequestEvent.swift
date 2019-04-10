@@ -1,5 +1,5 @@
 //
-//  MemberEvent.swift
+//  PullRequestEvent.swift
 //  SourceHub
 //
 //  Created by Will Tyler on 4/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 extension GitHub {
 
-	struct MemberEvent: Codable, GitHubEvent {
+	struct PullRequestEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .member else {
+			guard type == .pullRequest else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(MemberEvent.self, context)
+				throw DecodingError.typeMismatch(PullRequestEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,35 +61,12 @@ extension GitHub {
 }
 
 
-extension GitHub.MemberEvent {
+extension GitHub.PullRequestEvent {
 
 	struct Payload: Codable {
 
-		let member: Member
 		let action: String
-
-	}
-
-}
-
-
-extension GitHub.MemberEvent.Payload {
-
-	struct Member: Codable {
-
-		let login: String
-		let id: Int
-		let nodeID: String
-		let avatarURL: URL
-		let type: String
-
-		private enum CodingKeys: String, CodingKey {
-			case login
-			case id
-			case nodeID = "node_id"
-			case avatarURL = "avatar_url"
-			case type
-		}
+		let number: UInt
 
 	}
 

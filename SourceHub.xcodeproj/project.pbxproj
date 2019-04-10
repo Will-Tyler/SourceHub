@@ -28,6 +28,8 @@
 		4C5962FF225E64570020649A /* GitHubEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5962FE225E64570020649A /* GitHubEvent.swift */; };
 		4C596301225E6ED50020649A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C596300225E6ED50020649A /* UITableView.swift */; };
 		4C596303225E70DF0020649A /* MemberEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C596302225E70DF0020649A /* MemberEvent.swift */; };
+		4C596305225E74590020649A /* PullRequestEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C596304225E74590020649A /* PullRequestEvent.swift */; };
+		4C596307225E75890020649A /* ForkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C596306225E75890020649A /* ForkEvent.swift */; };
 		4C7E7DF1224E81B90095C4A8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF0224E81B90095C4A8 /* Event.swift */; };
 		4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */; };
 		4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */; };
@@ -71,6 +73,8 @@
 		4C5962FE225E64570020649A /* GitHubEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubEvent.swift; sourceTree = "<group>"; };
 		4C596300225E6ED50020649A /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4C596302225E70DF0020649A /* MemberEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEvent.swift; sourceTree = "<group>"; };
+		4C596304225E74590020649A /* PullRequestEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestEvent.swift; sourceTree = "<group>"; };
+		4C596306225E75890020649A /* ForkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkEvent.swift; sourceTree = "<group>"; };
 		4C7E7DF0224E81B90095C4A8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEvent.swift; sourceTree = "<group>"; };
 		4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDecoder.swift; sourceTree = "<group>"; };
@@ -174,7 +178,9 @@
 				4C7E7DF0224E81B90095C4A8 /* Event.swift */,
 				4C7E7DF5224E9A480095C4A8 /* EventDecoder.swift */,
 				4C5962FC225E5D300020649A /* CreateEvent.swift */,
+				4C596306225E75890020649A /* ForkEvent.swift */,
 				4C596302225E70DF0020649A /* MemberEvent.swift */,
+				4C596304225E74590020649A /* PullRequestEvent.swift */,
 				4C5962FA225E54220020649A /* PushEvent.swift */,
 				4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */,
 			);
@@ -389,6 +395,7 @@
 				4CFEEBD3224051DA00487DA0 /* Owner.swift in Sources */,
 				4C7E7DF6224E9A480095C4A8 /* EventDecoder.swift in Sources */,
 				4C5962FB225E54220020649A /* PushEvent.swift in Sources */,
+				4C596307225E75890020649A /* ForkEvent.swift in Sources */,
 				4C397EF72255710B001C801B /* Colors.swift in Sources */,
 				4C197A3F224EE531002B1096 /* CGSize.swift in Sources */,
 				4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */,
@@ -397,6 +404,7 @@
 				4CFEEBCF224050EA00487DA0 /* Repository.swift in Sources */,
 				4C8010DC224990F800596297 /* URL.swift in Sources */,
 				4C4FCA772252D208008A6A4D /* Error.swift in Sources */,
+				4C596305225E74590020649A /* PullRequestEvent.swift in Sources */,
 				4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */,
 				4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */,
 				4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */,
