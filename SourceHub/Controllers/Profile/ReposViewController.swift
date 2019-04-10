@@ -26,7 +26,7 @@ class ReposViewController: UITableViewController {
 	override func loadView() {
 		super.loadView()
 		
-		tableView.register(RepoCell.self, forCellReuseIdentifier: String(describing: RepoCell.self))
+		tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: String(describing: RepoTableViewCell.self))
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -66,7 +66,7 @@ class ReposViewController: UITableViewController {
 		return repositories.count
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: String(describing: RepoCell.self)) as! RepoCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: String(describing: RepoTableViewCell.self)) as! RepoTableViewCell
 		let repo = repositories[indexPath.row]
 
 		cell.repo = repo

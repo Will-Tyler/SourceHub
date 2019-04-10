@@ -107,6 +107,8 @@ protocol GitHubEvent: Codable {
 
 	var id: String { get }
 	var type: GitHub.EventType { get }
+	var actor: GitHub.Actor { get }
+	var repo: GitHub.Repo { get }
 	var isPublic: Bool { get }
 	var createdAt: String { get }
 

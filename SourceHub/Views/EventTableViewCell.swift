@@ -64,44 +64,13 @@ class EventTableViewCell: UITableViewCell {
 	private var didSetupInitialLayout = false
 	var event: GitHubEvent! {
 		didSet {
-			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-
-			if let pushEvent = event as? GitHub.PushEvent {
-				let attributedMessage = NSMutableAttributedString()
-				let boldDisplayLogin = NSAttributedString(string: pushEvent.actor.displayLogin, attributes: [.font: boldFont])
-				let boldRepoName = NSAttributedString(string: pushEvent.repo.name, attributes: [.font: boldFont])
-
-				attributedMessage.append(boldDisplayLogin)
-				attributedMessage.append(NSAttributedString(string: " pushed to "))
-				attributedMessage.append(boldRepoName)
-
-				descriptionLabel.attributedText = attributedMessage
-
-				pushEvent.actor.handleAvatarImage(with: Handler { result in
-					DispatchQueue.main.async { [weak self] in
-						self?.avatarImageView.image = try? result.get()
-						self?.setNeedsLayout()
-					}
-				})
-			}
-			else if let watchEvent = event as? GitHub.WatchEvent {
-				let attributedMessage = NSMutableAttributedString()
-				let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
-				let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
-
-				attributedMessage.append(boldDisplayLogin)
-				attributedMessage.append(NSAttributedString(string: " starred "))
-				attributedMessage.append(boldRepoName)
-
-				descriptionLabel.attributedText = attributedMessage
-
-				watchEvent.actor.handleAvatarImage(with: Handler { result in
-					DispatchQueue.main.async { [weak self] in
-						self?.avatarImageView.image = try? result.get()
-						self?.setNeedsLayout()
-					}
-				})
-			}
+			descriptionLabel.attributedText = event.attributedMessage
+			event.actor.handleAvatarImage(with: Handler { result in
+				DispatchQueue.main.async { [weak self] in
+					self?.avatarImageView.image = try? result.get()
+					self?.setNeedsLayout()
+				}
+			})
 
 			if !didSetupInitialLayout {
 				setupInitialLayout()

@@ -1,5 +1,5 @@
 //
-//  PushEvent.swift
+//  CreateEvent.swift
 //  SourceHub
 //
 //  Created by Will Tyler on 4/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 extension GitHub {
 
-	struct PushEvent: Codable, GitHubEvent {
+	struct CreateEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .push else {
+			guard type == .create else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(PushEvent.self, context)
+				throw DecodingError.typeMismatch(CreateEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,49 +61,23 @@ extension GitHub {
 }
 
 
-extension GitHub.PushEvent {
+extension GitHub.CreateEvent {
 
 	struct Payload: Codable {
 
-		let pushID: Int
-		let size: UInt
-		let distinctSize: UInt
-		let ref: String
-		let head: String
-		let before: String
-		let commits: [Commit]
+		let ref: String?
+		let refType: String
+		let masterBranch: String
+		let description: String?
+		let pusherType: String
 
 		private enum CodingKeys: String, CodingKey {
-			case pushID = "push_id"
-			case size
-			case distinctSize = "distinct_size"
 			case ref
-			case head
-			case before
-			case commits
+			case refType = "ref_type"
+			case masterBranch = "master_branch"
+			case description
+			case pusherType = "pusher_type"
 		}
-
-	}
-
-	struct Commit: Codable {
-
-		let sha: String
-		let author: Author
-		let message: String
-		let distinct: Bool
-		let url: URL
-
-	}
-
-}
-
-
-extension GitHub.PushEvent.Commit {
-
-	struct Author: Codable {
-
-		let email: String
-		let name: String
 
 	}
 
