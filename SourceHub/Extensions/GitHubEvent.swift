@@ -11,33 +11,50 @@ import UIKit
 
 extension GitHubEvent {
 
-	var attributedMessage: NSAttributedString {
+	var description: NSAttributedString {
 		get {
 			let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
 			let attributedMessage = NSMutableAttributedString()
 			let boldDisplayLogin = NSAttributedString(string: actor.displayLogin, attributes: [.font: boldFont])
-			let boldRepoName = NSAttributedString(string: repo.name, attributes: [.font: boldFont])
-
-			attributedMessage.append(boldDisplayLogin)
-
-			let action: String
+			let receiver: String
 
 			switch type {
-			case .create:
-				action = "created a repository"
+			case .create, .fork, .pullRequest, .push, .watch:
+				receiver = repo.name
 
-			case .push:
-				action = "pushed to"
+			case .issues:
+				if let issuesEvent = self as? GitHub.IssuesEvent {
+					let issue = issuesEvent.payload.issue
 
-			case .watch:
-				action = "starred"
+					receiver = "[\(repo.name)] \(issue.title) (#\(issue.number))"
+				}
+				else {
+					assertionFailure()
+					receiver = "[\(repo.name)]"
+				}
 
 			default:
 				assertionFailure()
-				action = ""
+				receiver = repo.name
 			}
 
-			attributedMessage.append(NSAttributedString(string: " \(action) "))
+			let boldRepoName = NSAttributedString(string: receiver, attributes: [.font: boldFont])
+
+			attributedMessage.append(boldDisplayLogin)
+
+			let actions: [GitHub.EventType: String] = [
+				.create: "created a repository",
+				.fork: "forked",
+				.issues: "opened",
+				.pullRequest: "opened",
+				.push: "pushed to",
+				.watch: "starred"
+			]
+			let action = actions[type]
+
+			assert(action != nil)
+
+			attributedMessage.append(NSAttributedString(string: " \(action ?? "") "))
 			attributedMessage.append(boldRepoName)
 
 			return attributedMessage

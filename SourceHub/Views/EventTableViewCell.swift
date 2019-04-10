@@ -64,7 +64,7 @@ class EventTableViewCell: UITableViewCell {
 	private var didSetupInitialLayout = false
 	var event: GitHubEvent! {
 		didSet {
-			descriptionLabel.attributedText = event.attributedMessage
+			descriptionLabel.attributedText = event.description
 			event.actor.handleAvatarImage(with: Handler { result in
 				DispatchQueue.main.async { [weak self] in
 					self?.avatarImageView.image = try? result.get()
