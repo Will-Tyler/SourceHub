@@ -32,30 +32,6 @@ class RepoCell: UITableViewCell {
 		return label
 	}()
 	private lazy var isPrivateImageView = UIImageView()
-
-	var repo: GitHub.Repository! {
-		didSet {
-			repoLabel.text = repo.name
-
-			if (repo.description == nil) {
-				descriptionLabel.text = "No description available."
-			}
-			else {
-				descriptionLabel.text = repo.description
-			}
-
-			if (!repo.isPrivate) {
-				isPrivateImageView.image = UIImage(named: "Circle_Green")!
-			}
-			else {
-				isPrivateImageView.image = UIImage(named: "Circle_Red")!
-			}
-
-			if !didSetupInitialLayout {
-				setupInitialLayout()
-			}
-		}
-	}
 	private lazy var viewCommitButton: UIButton = {
 		let button = UIButton()
 
@@ -65,7 +41,6 @@ class RepoCell: UITableViewCell {
 		button.layer.masksToBounds = true
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
 		button.titleLabel?.numberOfLines = 2
-		//button.addTarget(self, action: #selector(prepareCommitView()), for: .touchUpInside)
 
 		return button
 	}()
@@ -81,7 +56,6 @@ class RepoCell: UITableViewCell {
 
 		return button
 	}()
-	private lazy var owner: GitHub.Owner! = repo.owner
 
 	private var didSetupInitialLayout = false
 	private func setupInitialLayout() {
@@ -122,8 +96,6 @@ class RepoCell: UITableViewCell {
 		isPrivateImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
 		isPrivateImageView.leadingAnchor.constraint(equalTo: isPrivateLabel.trailingAnchor, constant: 8).isActive = true
 
-		didSetupInitialLayout = true
-
 		viewContentsButton.translatesAutoresizingMaskIntoConstraints = false
 		viewContentsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
 		viewContentsButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
@@ -136,6 +108,32 @@ class RepoCell: UITableViewCell {
 		viewCommitButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 		viewCommitButton.trailingAnchor.constraint(equalTo: viewContentsButton.leadingAnchor, constant: -8).isActive = true
 
+		didSetupInitialLayout = true
+	}
+
+	private lazy var owner: GitHub.Owner! = repo.owner
+	var repo: GitHub.Repository! {
+		didSet {
+			repoLabel.text = repo.name
+
+			if (repo.description == nil) {
+				descriptionLabel.text = "No description available."
+			}
+			else {
+				descriptionLabel.text = repo.description
+			}
+
+			if (!repo.isPrivate) {
+				isPrivateImageView.image = UIImage(named: "Circle_Green")!
+			}
+			else {
+				isPrivateImageView.image = UIImage(named: "Circle_Red")!
+			}
+
+			if !didSetupInitialLayout {
+				setupInitialLayout()
+			}
+		}
 	}
 
 }
