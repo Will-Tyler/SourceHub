@@ -56,31 +56,31 @@ class RepoCell: UITableViewCell {
 			}
 		}
 	}
-    private lazy var viewCommitButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("View Commit History", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        button.layer.cornerRadius = 5
-        button.layer.masksToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.titleLabel?.numberOfLines = 2
-        //button.addTarget(self, action: #selector(prepareCommitView()), for: .touchUpInside)
-        
-        return button
-    }()
-    private lazy var viewContentsButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("View Contents", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        button.layer.cornerRadius = 5
-        button.layer.masksToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.titleLabel?.numberOfLines = 2
+	private lazy var viewCommitButton: UIButton = {
+		let button = UIButton()
 
-        return button
-    }()
+		button.setTitle("View Commit History", for: .normal)
+		button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+		button.layer.cornerRadius = 5
+		button.layer.masksToBounds = true
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+		button.titleLabel?.numberOfLines = 2
+		//button.addTarget(self, action: #selector(prepareCommitView()), for: .touchUpInside)
+
+		return button
+	}()
+	private lazy var viewContentsButton: UIButton = {
+		let button = UIButton()
+
+		button.setTitle("View Contents", for: .normal)
+		button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+		button.layer.cornerRadius = 5
+		button.layer.masksToBounds = true
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+		button.titleLabel?.numberOfLines = 2
+
+		return button
+	}()
 	private lazy var owner: GitHub.Owner! = repo.owner
 
 	private var didSetupInitialLayout = false
@@ -95,8 +95,8 @@ class RepoCell: UITableViewCell {
 		addSubview(repoLabel)
 		addSubview(isPrivateImageView)
 		addSubview(descriptionLabel)
-        addSubview(viewCommitButton)
-        addSubview(viewContentsButton)
+		addSubview(viewCommitButton)
+		addSubview(viewContentsButton)
 
 		repoLabel.translatesAutoresizingMaskIntoConstraints = false
 		repoLabel.heightAnchor.constraint(equalToConstant: repoLabel.intrinsicContentSize.height).isActive = true
@@ -123,19 +123,19 @@ class RepoCell: UITableViewCell {
 		isPrivateImageView.leadingAnchor.constraint(equalTo: isPrivateLabel.trailingAnchor, constant: 8).isActive = true
 
 		didSetupInitialLayout = true
-        
-        viewContentsButton.translatesAutoresizingMaskIntoConstraints = false
-        viewContentsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        viewContentsButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        viewContentsButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        viewContentsButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
-        
-        viewCommitButton.translatesAutoresizingMaskIntoConstraints = false
-        viewCommitButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        viewCommitButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        viewCommitButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        viewCommitButton.trailingAnchor.constraint(equalTo: viewContentsButton.leadingAnchor, constant: -8).isActive = true
-        
+
+		viewContentsButton.translatesAutoresizingMaskIntoConstraints = false
+		viewContentsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		viewContentsButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+		viewContentsButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		viewContentsButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
+
+		viewCommitButton.translatesAutoresizingMaskIntoConstraints = false
+		viewCommitButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		viewCommitButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+		viewCommitButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		viewCommitButton.trailingAnchor.constraint(equalTo: viewContentsButton.leadingAnchor, constant: -8).isActive = true
+
 	}
 
 }

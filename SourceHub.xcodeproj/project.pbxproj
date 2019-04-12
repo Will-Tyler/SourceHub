@@ -153,10 +153,10 @@
 		4C3CD6582258078300F1D023 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				18CDAD23225BFF7200EBD5DE /* CommitsTableViewController.swift */,
 				4C4286CC224C304D00E00170 /* OverViewController.swift */,
 				4C3CD659225807B300F1D023 /* ProfileViewController.swift */,
 				4C3CD65B225808D200F1D023 /* ReposViewController.swift */,
-				18CDAD23225BFF7200EBD5DE /* CommitsTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -219,11 +219,11 @@
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
 				4C83952A2249CE7100A7DFC2 /* Access.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
+				18CDAD25225C003800EBD5DE /* Commit.swift */,
 				4C4FCA762252D208008A6A4D /* Error.swift */,
 				4C7E7DF2224E90720095C4A8 /* Events */,
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
-				18CDAD25225C003800EBD5DE /* Commit.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";
