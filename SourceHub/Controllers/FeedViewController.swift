@@ -24,6 +24,8 @@ class FeedViewController: UITableViewController {
 		super.init(coder: aDecoder)
 	}
 
+	private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationBarAction))
+
 	override func loadView() {
 		super.loadView()
 
@@ -39,6 +41,20 @@ class FeedViewController: UITableViewController {
 		refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: .valueChanged)
 
 		fetchEvents()
+	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		navigationController?.navigationBar.addGestureRecognizer(tapGesture)
+	}
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		navigationController?.navigationBar.removeGestureRecognizer(tapGesture)
+	}
+
+	@objc private func navigationBarAction() {
+		tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
 	}
 
 	@objc private func refreshControlAction() {
