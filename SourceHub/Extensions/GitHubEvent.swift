@@ -74,8 +74,8 @@ extension GitHubEvent {
 				.delete: "deleted",
 				.fork: "forked",
 				.issueComment: "commented on",
-				.issues: "opened",
-				.pullRequest: "opened",
+				.issues: "opened an issue",
+				.pullRequest: "opened a pull request",
 				.pullRequestReviewComment: "commented on",
 				.push: "pushed to",
 				.watch: "starred"
