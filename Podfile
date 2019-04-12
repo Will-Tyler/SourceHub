@@ -7,5 +7,6 @@ target 'SourceHub' do
 
   # Pods for SourceHub
 	pod 'AlamofireImage'
+	pod 'ReachabilitySwift'
 
 end
