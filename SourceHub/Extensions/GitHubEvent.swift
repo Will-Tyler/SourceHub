@@ -49,6 +49,17 @@ extension GitHubEvent {
 
 				receiver = "[\(repo.name)] \(issue.title) (#\(issue.number))"
 
+			case .pullRequestReviewComment:
+				guard let pullRequestReviewCommentEvent = self as? GitHub.PullRequestReviewCommentEvent else {
+					assertionFailure()
+					receiver = repo.name
+					break
+				}
+
+				let pullRequest = pullRequestReviewCommentEvent.payload.pullRequest
+
+				receiver = "[\(pullRequestReviewCommentEvent.repo.name) \(pullRequest.title) (#\(pullRequest.number))]"
+
 			default:
 				assertionFailure()
 				receiver = repo.name
@@ -65,6 +76,7 @@ extension GitHubEvent {
 				.issueComment: "commented on",
 				.issues: "opened",
 				.pullRequest: "opened",
+				.pullRequestReviewComment: "commented on",
 				.push: "pushed to",
 				.watch: "starred"
 			]

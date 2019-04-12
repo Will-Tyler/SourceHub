@@ -67,6 +67,13 @@ extension GitHub.PullRequestReviewCommentEvent {
 
 		let action: String
 		let comment: Comment
+		let pullRequest: GitHub.PullRequest
+
+		private enum CodingKeys: String, CodingKey {
+			case action
+			case comment
+			case pullRequest = "pull_request"
+		}
 
 	}
 
