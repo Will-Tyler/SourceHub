@@ -22,6 +22,11 @@ extension GitHubEvent {
 			case .create, .fork, .pullRequest, .push, .watch:
 				receiver = repo.name
 
+			case .delete:
+				let deleteEvent = self as! GitHub.DeleteEvent
+
+				receiver = deleteEvent.payload.ref
+
 			case .issues:
 				if let issuesEvent = self as? GitHub.IssuesEvent {
 					let issue = issuesEvent.payload.issue
@@ -32,6 +37,17 @@ extension GitHubEvent {
 					assertionFailure()
 					receiver = "[\(repo.name)]"
 				}
+
+			case .issueComment:
+				guard let issueCommentEvent = self as? GitHub.IssueCommentEvent else {
+					assertionFailure()
+					receiver = repo.name
+					break
+				}
+
+				let issue = issueCommentEvent.payload.issue
+
+				receiver = "[\(repo.name)] \(issue.title) (#\(issue.number))"
 
 			default:
 				assertionFailure()
@@ -44,7 +60,9 @@ extension GitHubEvent {
 
 			let actions: [GitHub.EventType: String] = [
 				.create: "created a repository",
+				.delete: "deleted",
 				.fork: "forked",
+				.issueComment: "commented on",
 				.issues: "opened",
 				.pullRequest: "opened",
 				.push: "pushed to",

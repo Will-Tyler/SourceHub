@@ -11,6 +11,7 @@
 		4C11CEF7225EA574000309D8 /* DeleteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEF6225EA574000309D8 /* DeleteEvent.swift */; };
 		4C11CEF9225EA690000309D8 /* IssueCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEF8225EA690000309D8 /* IssueCommentEvent.swift */; };
 		4C11CEFB225EA72F000309D8 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEFA225EA72F000309D8 /* Issue.swift */; };
+		4C11CEFD225EAAA1000309D8 /* PullRequestReviewCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEFC225EAAA1000309D8 /* PullRequestReviewCommentEvent.swift */; };
 		4C197A3D224EE249002B1096 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3C224EE249002B1096 /* Macro.swift */; };
 		4C197A3F224EE531002B1096 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3E224EE531002B1096 /* CGSize.swift */; };
 		4C397EF5225566DD001C801B /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF4225566DD001C801B /* Handler.swift */; };
@@ -59,6 +60,7 @@
 		4C11CEF6225EA574000309D8 /* DeleteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEvent.swift; sourceTree = "<group>"; };
 		4C11CEF8225EA690000309D8 /* IssueCommentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCommentEvent.swift; sourceTree = "<group>"; };
 		4C11CEFA225EA72F000309D8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		4C11CEFC225EAAA1000309D8 /* PullRequestReviewCommentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestReviewCommentEvent.swift; sourceTree = "<group>"; };
 		4C197A3C224EE249002B1096 /* Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		4C197A3E224EE531002B1096 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		4C197A40224EED5C002B1096 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -192,6 +194,7 @@
 				4C11CEF4225E8C08000309D8 /* IssuesEvent.swift */,
 				4C596302225E70DF0020649A /* MemberEvent.swift */,
 				4C596304225E74590020649A /* PullRequestEvent.swift */,
+				4C11CEFC225EAAA1000309D8 /* PullRequestReviewCommentEvent.swift */,
 				4C5962FA225E54220020649A /* PushEvent.swift */,
 				4C7E7DF3224E90830095C4A8 /* WatchEvent.swift */,
 			);
@@ -413,6 +416,7 @@
 				4C397EF72255710B001C801B /* Colors.swift in Sources */,
 				4C197A3F224EE531002B1096 /* CGSize.swift in Sources */,
 				4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */,
+				4C11CEFD225EAAA1000309D8 /* PullRequestReviewCommentEvent.swift in Sources */,
 				4CFEEBD52240553000487DA0 /* AuthenticatedUser.swift in Sources */,
 				4C5962FF225E64570020649A /* GitHubEvent.swift in Sources */,
 				4C11CEFB225EA72F000309D8 /* Issue.swift in Sources */,
