@@ -115,13 +115,7 @@ class RepoCell: UITableViewCell {
 	var repo: GitHub.Repository! {
 		didSet {
 			repoLabel.text = repo.name
-
-			if (repo.description == nil) {
-				descriptionLabel.text = "No description available."
-			}
-			else {
-				descriptionLabel.text = repo.description
-			}
+			descriptionLabel.text = repo.description ?? "No description available."
 
 			if (!repo.isPrivate) {
 				isPrivateImageView.image = UIImage(named: "Circle_Green")!
