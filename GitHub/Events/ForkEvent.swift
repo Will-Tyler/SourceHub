@@ -1,17 +1,17 @@
 //
-//  WatchEvent.swift
+//  ForkEvent.swift
 //  SourceHub
 //
-//  Created by Will Tyler on 3/29/19.
+//  Created by Will Tyler on 4/10/19.
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 
 extension GitHub {
 
-	struct WatchEvent: Codable, GitHubEvent {
+	struct ForkEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .watch else {
+			guard type == .fork else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(WatchEvent.self, context)
+				throw DecodingError.typeMismatch(ForkEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,11 +61,28 @@ extension GitHub {
 }
 
 
-extension GitHub.WatchEvent {
+extension GitHub.ForkEvent {
 
 	struct Payload: Codable {
+		let forkee: Forkee
+	}
 
-		let action: String
+}
+
+
+extension GitHub.ForkEvent.Payload {
+
+	struct Forkee: Codable {
+
+		let id: UInt
+		let name: String
+		let fullName: String
+
+		private enum CodingKeys: String, CodingKey {
+			case id
+			case name
+			case fullName = "full_name"
+		}
 
 	}
 

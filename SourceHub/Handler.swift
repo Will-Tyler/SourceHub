@@ -15,6 +15,7 @@ public class Handler<T, E: Error> {
 
 	private let closure: (Result<T, E>)->()
 	private var didExecute = false
+	private let semaphore = DispatchSemaphore(value: 1)
 
 	public init(_ closure: @escaping (Result<T, E>)->()) {
 		self.closure = closure
@@ -25,6 +26,7 @@ public class Handler<T, E: Error> {
 	}
 
 	public func execute(with result: Result<T, E>) {
+		semaphore.wait()
 		assert(!didExecute)
 
 		if !didExecute {
@@ -32,6 +34,7 @@ public class Handler<T, E: Error> {
 		}
 
 		didExecute = true
+		semaphore.signal()
 	}
 
 	func dynamicallyCall(withArguments arguments: [Result<T, E>]) {

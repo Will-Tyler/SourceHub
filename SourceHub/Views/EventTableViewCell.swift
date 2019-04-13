@@ -64,25 +64,13 @@ class EventTableViewCell: UITableViewCell {
 	private var didSetupInitialLayout = false
 	var event: GitHubEvent! {
 		didSet {
-			if let watchEvent = event as? GitHub.WatchEvent {
-				let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-				let attributedMessage = NSMutableAttributedString()
-				let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
-				let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
-
-				attributedMessage.append(boldDisplayLogin)
-				attributedMessage.append(NSAttributedString(string: " starred "))
-				attributedMessage.append(boldRepoName)
-
-				descriptionLabel.attributedText = attributedMessage
-
-				watchEvent.actor.handleAvatarImage(with: Handler { result in
-					DispatchQueue.main.async { [weak self] in
-						self?.avatarImageView.image = try? result.get()
-						self?.setNeedsLayout()
-					}
-				})
-			}
+			descriptionLabel.attributedText = event.description
+			event.actor.handleAvatarImage(with: Handler { result in
+				DispatchQueue.main.async { [weak self] in
+					self?.avatarImageView.image = try? result.get()
+					self?.setNeedsLayout()
+				}
+			})
 
 			if !didSetupInitialLayout {
 				setupInitialLayout()

@@ -1,5 +1,5 @@
 //
-//  RepoCell.swift
+//  RepoTableViewCell.swift
 //  SourceHub
 //
 //  Created by APPLE on 3/28/19.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class RepoCell: UITableViewCell {
+class RepoTableViewCell: UITableViewCell {
 
 	private lazy var repoLabel: UILabel = {
 		let label = UILabel()
