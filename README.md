@@ -4,6 +4,9 @@
 
 A GitHub client application built for iOS.
 
+### Sprint 3
+<img src='Sprint3.gif' width='380' alt='Video Walkthrough' />
+
 ### Sprint 2
 <img src='Sprint2.gif' width='380' alt='Video Walkthrough' />
 
@@ -19,7 +22,7 @@ A GitHub client application built for iOS.
  - [x] The user can view a profile page, highlighting information about their repositories and contributions.
  - [x] The user sees their profile picture in the profile page.
  - [x] The user sees their GitHub username in the profile page.
- * The user can view their personal repositories.
+ - [x] The user can view their personal repositories.
  * The user is able to browse the content in the repositories, including browsing the source code.
 
 **Optional Nice-to-have Stories**
