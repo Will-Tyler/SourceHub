@@ -65,9 +65,9 @@ class EventTableViewCell: UITableViewCell {
 	var event: GitHubEvent! {
 		didSet {
 			if let watchEvent = event as? GitHub.WatchEvent {
-				let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-				let attributedMessage = NSMutableAttributedString()
-				let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
+                let boldFont = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+                let attributedMessage = NSMutableAttributedString()
+                let boldDisplayLogin = NSMutableAttributedString(string: watchEvent.actor.displayLogin, attributes: [.font: boldFont])
 				let boldRepoName = NSAttributedString(string: watchEvent.repo.name, attributes: [.font: boldFont])
 
 				attributedMessage.append(boldDisplayLogin)

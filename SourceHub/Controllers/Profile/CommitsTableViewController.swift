@@ -16,20 +16,22 @@ class CommitsTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+        fetchCommits()
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.reloadData()
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return commits.count
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: "reuseIdentifier")
 		let commit = commits[indexPath.row]
 
 		cell.textLabel?.text = commit.committer.login
-		cell.detailTextLabel?.text = commit.message
-
+		cell.detailTextLabel?.text = commit.commit.message
+        
 		return cell
 	}
 
@@ -53,6 +55,7 @@ class CommitsTableViewController: UITableViewController {
 
 					case .success(let commit):
 						self?.commits = commit
+                        print(self?.commits)
 
 						DispatchQueue.main.async {
 							self?.tableView.reloadData()

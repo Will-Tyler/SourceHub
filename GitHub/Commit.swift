@@ -17,13 +17,11 @@ extension GitHub {
 		let commit: InnerCommit
 		let author: Author
 		let committer: Committer
-		let message: String
 
 		private enum CodingKeys: String, CodingKey {
 			case url
 			case author
 			case committer
-			case message
 			case commit
 		}
 
@@ -51,7 +49,6 @@ extension GitHub.Commit {
 		let login: String
 		let id: Int
 		let avatar_url: String
-		let events_url: URL
 		let received_events_url: URL
 	}
 
@@ -59,7 +56,6 @@ extension GitHub.Commit {
 		let login: String
 		let id: Int
 		let avatar_url: String
-		let events_url: URL
 		let received_events_url: URL
 	}
 }
