@@ -1,5 +1,5 @@
 //
-//  CommitsTableViewController.swift
+//  CommitsViewController.swift
 //  SourceHub
 //
 //  Created by APPLE on 4/8/19.
@@ -9,7 +9,19 @@
 import UIKit
 
 
-class CommitsTableViewController: UITableViewController {
+class CommitsViewController: UITableViewController {
+
+	convenience init() {
+		self.init(nibName: nil, bundle: nil)
+	}
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+		title = "Commits"
+	}
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
 
 	var repo: GitHub.Repository?
 	private var commits = [GitHub.Commit]()
@@ -55,7 +67,6 @@ class CommitsTableViewController: UITableViewController {
 
 					case .success(let commit):
 						self?.commits = commit
-                        print(self?.commits)
 
 						DispatchQueue.main.async {
 							self?.tableView.reloadData()

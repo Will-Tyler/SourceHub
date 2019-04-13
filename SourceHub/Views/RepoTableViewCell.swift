@@ -1,5 +1,5 @@
 //
-//  RepoCell.swift
+//  RepoTableViewCell.swift
 //  SourceHub
 //
 //  Created by APPLE on 3/28/19.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class RepoCell: UITableViewCell {
+class RepoTableViewCell: UITableViewCell {
 
 	private lazy var repoLabel: UILabel = {
 		let label = UILabel()
@@ -33,6 +33,7 @@ class RepoCell: UITableViewCell {
 	}()
 	private lazy var isPrivateImageView = UIImageView()
 
+	/// Cells are reused so this is used to monitor whether this cell has already been layed out.
 	private var didSetupInitialLayout = false
 	private func setupInitialLayout() {
 		let isPrivateLabel = UILabel()
@@ -79,7 +80,7 @@ class RepoCell: UITableViewCell {
 			repoLabel.text = repo.name
 			descriptionLabel.text = repo.description ?? "No description available."
 
-			if (!repo.isPrivate) {
+			if !repo.isPrivate {
 				isPrivateImageView.image = UIImage(named: "Circle_Green")!
 			}
 			else {
