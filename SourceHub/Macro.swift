@@ -14,3 +14,19 @@ import AlamofireImage
 
 /// Use this to download images. This will automatically store them on the device.
 let imageDownloader = ImageDownloader()
+
+
+var topViewController: UIViewController? {
+	get {
+		if var viewController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presented = viewController.presentedViewController {
+				viewController = presented
+			}
+
+			return viewController
+		}
+		else {
+			return nil
+		}
+	}
+}

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Reachability
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	private var reachability: Reachability?
 
 	private func setupAppearance() {
 		UINavigationBar.appearance().prefersLargeTitles = true
@@ -21,9 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UIPageControl.appearance().currentPageIndicatorTintColor = .black
 	}
 
+	private func setupReachability() {
+		reachability = Reachability()
+
+		reachability?.whenUnreachable = { _ in
+			print("Check that there is an internet connection.")
+
+			topViewController?.alertUser(title: "No Internet Connection", message: "Make sure that you have an internet connection in order to use SourceHub.")
+		}
+	}
+
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
 		setupAppearance()
+		setupReachability()
 		
 		let tabBarController = TabBarController()
 
@@ -33,6 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		if !GitHub.isAuthenticated {
 			tabBarController.present(SignInViewController(), animated: false)
+		}
+
+		do {
+			try reachability?.startNotifier()
+		}
+		catch {
+			debugPrint(error)
+			assertionFailure()
 		}
 		
 		return true

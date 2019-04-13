@@ -2,19 +2,23 @@ PODS:
   - Alamofire (4.8.2)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
+  - ReachabilitySwift (4.3.1)
 
 DEPENDENCIES:
   - AlamofireImage
+  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
 
-PODFILE CHECKSUM: 8dcdf8919e0fed9bbeda6375a4c92b4ffed9c2c4
+PODFILE CHECKSUM: 050272b12834ecd51571e54a7f7f2ec72513bd8e
 
 COCOAPODS: 1.6.1

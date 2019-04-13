@@ -1,17 +1,17 @@
 //
-//  WatchEvent.swift
+//  MemberEvent.swift
 //  SourceHub
 //
-//  Created by Will Tyler on 3/29/19.
+//  Created by Will Tyler on 4/10/19.
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 
 extension GitHub {
 
-	struct WatchEvent: Codable, GitHubEvent {
+	struct MemberEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .watch else {
+			guard type == .member else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(WatchEvent.self, context)
+				throw DecodingError.typeMismatch(MemberEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,11 +61,35 @@ extension GitHub {
 }
 
 
-extension GitHub.WatchEvent {
+extension GitHub.MemberEvent {
 
 	struct Payload: Codable {
 
+		let member: Member
 		let action: String
+
+	}
+
+}
+
+
+extension GitHub.MemberEvent.Payload {
+
+	struct Member: Codable {
+
+		let login: String
+		let id: Int
+		let nodeID: String
+		let avatarURL: URL
+		let type: String
+
+		private enum CodingKeys: String, CodingKey {
+			case login
+			case id
+			case nodeID = "node_id"
+			case avatarURL = "avatar_url"
+			case type
+		}
 
 	}
 

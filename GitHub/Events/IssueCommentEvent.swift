@@ -1,17 +1,17 @@
 //
-//  WatchEvent.swift
+//  IssueCommentEvent.swift
 //  SourceHub
 //
-//  Created by Will Tyler on 3/29/19.
+//  Created by Will Tyler on 4/10/19.
 //  Copyright © 2019 SourceHub. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 
 extension GitHub {
 
-	struct WatchEvent: Codable, GitHubEvent {
+	struct IssueCommentEvent: Codable, GitHubEvent {
 
 		let id: String
 		let type: EventType
@@ -26,9 +26,9 @@ extension GitHub {
 
 			self.type = try container.decode(EventType.self, forKey: .type)
 
-			guard type == .watch else {
+			guard type == .issueComment else {
 				let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "")
-				throw DecodingError.typeMismatch(WatchEvent.self, context)
+				throw DecodingError.typeMismatch(IssueCommentEvent.self, context)
 			}
 
 			// Sometimes id is an Int. Other times it is a String.
@@ -61,11 +61,26 @@ extension GitHub {
 }
 
 
-extension GitHub.WatchEvent {
+extension GitHub.IssueCommentEvent {
 
 	struct Payload: Codable {
 
 		let action: String
+		let issue: GitHub.Issue
+		let comment: Comment
+
+	}
+
+}
+
+
+extension GitHub.IssueCommentEvent.Payload {
+
+	struct Comment: Codable {
+
+		let url: URL
+		let id: UInt
+		let body: String
 
 	}
 
