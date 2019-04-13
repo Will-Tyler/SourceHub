@@ -33,31 +33,7 @@ class RepoTableViewCell: UITableViewCell {
 	}()
 	private lazy var isPrivateImageView = UIImageView()
 
-	var repo: GitHub.Repository! {
-		didSet {
-			repoLabel.text = repo.name
-
-			if (repo.description == nil) {
-				descriptionLabel.text = "No description available."
-			}
-			else {
-				descriptionLabel.text = repo.description
-			}
-
-			if (!repo.isPrivate) {
-				isPrivateImageView.image = UIImage(named: "Circle_Green")!
-			}
-			else {
-				isPrivateImageView.image = UIImage(named: "Circle_Red")!
-			}
-
-			if !didSetupInitialLayout {
-				setupInitialLayout()
-			}
-		}
-	}
-	private lazy var owner: GitHub.Owner! = repo.owner
-
+	/// Cells are reused so this is used to monitor whether this cell has already been layed out.
 	private var didSetupInitialLayout = false
 	private func setupInitialLayout() {
 		let isPrivateLabel = UILabel()
@@ -96,6 +72,25 @@ class RepoTableViewCell: UITableViewCell {
 		isPrivateImageView.leadingAnchor.constraint(equalTo: isPrivateLabel.trailingAnchor, constant: 8).isActive = true
 
 		didSetupInitialLayout = true
+	}
+
+	private lazy var owner: GitHub.Owner! = repo.owner
+	var repo: GitHub.Repository! {
+		didSet {
+			repoLabel.text = repo.name
+			descriptionLabel.text = repo.description ?? "No description available."
+
+			if !repo.isPrivate {
+				isPrivateImageView.image = UIImage(named: "Circle_Green")!
+			}
+			else {
+				isPrivateImageView.image = UIImage(named: "Circle_Red")!
+			}
+
+			if !didSetupInitialLayout {
+				setupInitialLayout()
+			}
+		}
 	}
 
 }
