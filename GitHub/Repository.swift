@@ -9,20 +9,20 @@
 import Foundation
 
 
-extension GitHub {
+public extension GitHub {
 
 	struct Repository: Codable {
 
-		let id: Int
-		let nodeID: String
-		let name: String
-		let fullName: String
-		let owner: Owner
-		let isPrivate: Bool
-		let description: String?
-		let isFork: Bool
-		let url: URL
-		let defaultBranch: String
+		public let id: Int
+		public let nodeID: String
+		public let name: String
+		public let fullName: String
+		public let owner: Owner
+		public let isPrivate: Bool
+		public let description: String?
+		public let isFork: Bool
+		public let url: URL
+		public let defaultBranch: String
 
 		private enum CodingKeys: String, CodingKey {
 			case id
