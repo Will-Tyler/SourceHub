@@ -11,6 +11,7 @@
 		18CDAD24225BFF7200EBD5DE /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */; };
 		4C197A3D224EE249002B1096 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3C224EE249002B1096 /* Macro.swift */; };
 		4C197A3F224EE531002B1096 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3E224EE531002B1096 /* CGSize.swift */; };
+		4C2C6EF5226588110079062C /* AccessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C6EF4226588110079062C /* AccessRequest.swift */; };
 		4C397EF72255710B001C801B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF62255710B001C801B /* Colors.swift */; };
 		4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C397EF822557412001C801B /* EventTableViewCell.swift */; };
 		4C3CD6552257FBB000F1D023 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD6542257FBB000F1D023 /* RepoTableViewCell.swift */; };
@@ -55,7 +56,6 @@
 		4CABC7EB2265316B00EB5842 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DD2249912500596297 /* HTTP.swift */; };
 		4CABC7EC2265316B00EB5842 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3C224EE249002B1096 /* Macro.swift */; };
 		4CABC7ED2265329D00EB5842 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8010DB224990F800596297 /* URL.swift */; };
-		4CABC88C2265460A00EB5842 /* Client Secret in Resources */ = {isa = PBXBuildFile; fileRef = 4CABC88B2265460A00EB5842 /* Client Secret */; };
 		4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32160222DF6C70034F1D9 /* AppDelegate.swift */; };
 		4CF32163222DF6C70034F1D9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF32162222DF6C70034F1D9 /* SignInViewController.swift */; };
 		4CF32168222DF6C80034F1D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF32167222DF6C80034F1D9 /* Assets.xcassets */; };
@@ -102,6 +102,7 @@
 		4C197A3C224EE249002B1096 /* Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		4C197A3E224EE531002B1096 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		4C197A40224EED5C002B1096 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4C2C6EF4226588110079062C /* AccessRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessRequest.swift; sourceTree = "<group>"; };
 		4C397EF4225566DD001C801B /* Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		4C397EF62255710B001C801B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4C397EF822557412001C801B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +134,6 @@
 		4CABC7C72265311000EB5842 /* GitHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CABC7C92265311000EB5842 /* GitHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHub.h; sourceTree = "<group>"; };
 		4CABC7CA2265311000EB5842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CABC88B2265460A00EB5842 /* Client Secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Client Secret"; sourceTree = "<group>"; };
 		4CC5A9072260F84700D1ACFB /* PullRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
 		4CF3215D222DF6C70034F1D9 /* SourceHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF32160222DF6C70034F1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -310,9 +310,9 @@
 		4CFEEBCD224050D900487DA0 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
-				4CABC88B2265460A00EB5842 /* Client Secret */,
 				4CFEEBD0224050F500487DA0 /* GitHub.swift */,
 				4C83952A2249CE7100A7DFC2 /* Access.swift */,
+				4C2C6EF4226588110079062C /* AccessRequest.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
 				18CDAD25225C003800EBD5DE /* Commit.swift */,
 				4C4FCA762252D208008A6A4D /* Error.swift */,
@@ -432,7 +432,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CABC88C2265460A00EB5842 /* Client Secret in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +535,7 @@
 				4CABC7E82265314200EB5842 /* PushEvent.swift in Sources */,
 				4CABC7E92265314200EB5842 /* WatchEvent.swift in Sources */,
 				4CABC7DB2265313800EB5842 /* Owner.swift in Sources */,
+				4C2C6EF5226588110079062C /* AccessRequest.swift in Sources */,
 				4CABC7DE2265314200EB5842 /* Event.swift in Sources */,
 				4CABC7EB2265316B00EB5842 /* HTTP.swift in Sources */,
 				4CABC7D72265312D00EB5842 /* AuthenticatedUser.swift in Sources */,
