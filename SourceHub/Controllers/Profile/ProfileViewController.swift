@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHub
 
 
 class ProfileViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {

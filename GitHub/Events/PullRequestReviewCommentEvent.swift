@@ -11,17 +11,17 @@ import Foundation
 
 extension GitHub {
 
-	struct PullRequestReviewCommentEvent: Codable, GitHubEvent {
+	public struct PullRequestReviewCommentEvent: Codable, GitHubEvent {
 
-		let id: String
-		let type: EventType
-		let actor: Actor
-		let repo: Repo
-		let payload: Payload
-		let isPublic: Bool
-		let createdAt: String
+		public let id: String
+		public let type: EventType
+		public let actor: Actor
+		public let repo: Repo
+		public let payload: Payload
+		public let isPublic: Bool
+		public let createdAt: String
 
-		init(from decoder: Decoder) throws {
+		public init(from decoder: Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 
 			self.type = try container.decode(EventType.self, forKey: .type)
@@ -63,11 +63,11 @@ extension GitHub {
 
 extension GitHub.PullRequestReviewCommentEvent {
 
-	struct Payload: Codable {
+	public struct Payload: Codable {
 
-		let action: String
-		let comment: Comment
-		let pullRequest: GitHub.PullRequest
+		public let action: String
+		public let comment: Comment
+		public let pullRequest: GitHub.PullRequest
 
 		private enum CodingKeys: String, CodingKey {
 			case action
@@ -82,7 +82,7 @@ extension GitHub.PullRequestReviewCommentEvent {
 
 extension GitHub.PullRequestReviewCommentEvent.Payload {
 
-	struct Comment: Codable {
+	public struct Comment: Codable {
 
 		let url: URL
 		let id: UInt

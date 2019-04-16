@@ -11,12 +11,12 @@ import Foundation
 
 extension GitHub {
 
-	struct Commit: Codable {
+	public struct Commit: Codable {
 
 		let url: String
-		let commit: InnerCommit
+		public let commit: InnerCommit
 		let author: Author
-		let committer: Committer
+		public let committer: Committer
 
 		private enum CodingKeys: String, CodingKey {
 			case url
@@ -31,11 +31,11 @@ extension GitHub {
 
 extension GitHub.Commit {
 
-	struct InnerCommit: Codable {
+	public struct InnerCommit: Codable {
 		let url: String
 		let author: CommitAuthor
 		let committer: CommitCommitter
-		let message: String
+		public let message: String
 
 		private enum CodingKeys: String, CodingKey {
 			case url
@@ -52,8 +52,8 @@ extension GitHub.Commit {
 		let received_events_url: URL
 	}
 
-	struct Committer: Codable {
-		let login: String
+	public struct Committer: Codable {
+		public let login: String
 		let id: Int
 		let avatar_url: String
 		let received_events_url: URL

@@ -13,15 +13,15 @@ extension GitHub {
 
 	struct ForkEvent: Codable, GitHubEvent {
 
-		let id: String
-		let type: EventType
-		let actor: Actor
-		let repo: Repo
-		let payload: Payload
-		let isPublic: Bool
-		let createdAt: String
+		public let id: String
+		public let type: EventType
+		public let actor: Actor
+		public let repo: Repo
+		public let payload: Payload
+		public let isPublic: Bool
+		public let createdAt: String
 
-		init(from decoder: Decoder) throws {
+		public init(from decoder: Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 
 			self.type = try container.decode(EventType.self, forKey: .type)
@@ -63,8 +63,8 @@ extension GitHub {
 
 extension GitHub.ForkEvent {
 
-	struct Payload: Codable {
-		let forkee: Forkee
+	public struct Payload: Codable {
+		public let forkee: Forkee
 	}
 
 }
@@ -72,11 +72,11 @@ extension GitHub.ForkEvent {
 
 extension GitHub.ForkEvent.Payload {
 
-	struct Forkee: Codable {
+	public struct Forkee: Codable {
 
-		let id: UInt
-		let name: String
-		let fullName: String
+		public let id: UInt
+		public let name: String
+		public let fullName: String
 
 		private enum CodingKeys: String, CodingKey {
 			case id

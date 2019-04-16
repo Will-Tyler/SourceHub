@@ -11,14 +11,14 @@ import Foundation
 
 extension GitHub {
 
-	struct PullRequest: Codable {
+	public struct PullRequest: Codable {
 
-		let url: URL
-		let id: UInt
-		let number: UInt
-		let state: String
-		let title: String
-		let body: String
+		public let url: URL
+		public let id: UInt
+		public let number: UInt
+		public let state: String
+		public let title: String
+		public let body: String
 
 	}
 
