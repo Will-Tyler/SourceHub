@@ -13,15 +13,7 @@ import SafariServices
 public class GitHub {
 
 	private static let apiURL = URL(string: "https://api.github.com/")!
-	private static let clientID = "2d39851172caae950d95"
-	private static let clientSecret: String = {
-		// Note that loading the client secret on the client is not secure for a production release.
-		// Were this application to be published, a server would be needed for token swapping.
-		let url = Bundle.main.url(forResource: "Client Secret", withExtension: nil)!
-		let contents = FileManager.default.contents(atPath: url.path)!
-
-		return String(data: contents, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
-	}()
+	static let clientID = "2d39851172caae950d95"
 	private static let accessDataKey = "GitHub.access"
 	private static var access: Access? = {
 		if let accessData = UserDefaults.standard.data(forKey: accessDataKey), let access = try? JSONDecoder().decode(Access.self, from: accessData) {
@@ -43,6 +35,7 @@ public class GitHub {
 
 	/// A queue of completion handlers that need to be executed with authentication is completed.
 	private static var authenticationQueue = [(Swift.Error?)->()]()
+	/// A SFSafariViewController might be used to present the GitHub login page.
 	private static var safariViewController: SFSafariViewController?
 
 	/// Return whether a user is authenticated in GitHub.
@@ -87,7 +80,7 @@ public class GitHub {
 	}
 
 	/// Completes the authentication process once the GitHub authenication page has redirected back to SourceHub.
-	/// It is highly unlikely that you need to call this method, unless you are AppDelegate.
+	/// It is highly unlikely that you need to call this method, unless you are the AppDelegate.
 	///
 	/// - Parameter url: The url that the GitHub authentication page redirected with.
 	public static func completeAuthentication(with url: URL) {
@@ -106,35 +99,40 @@ public class GitHub {
 			return
 		}
 
-		let authURL = URL(string: "https://github.com/login/oauth/access_token")!
-		let parameters = [
-			"client_id": clientID,
-			"client_secret": clientSecret,
-			"code": code
-		]
+		let authURL = URL(string: "https://sourcehub-server.herokuapp.com/token")!
+		let accessRequest = AccessRequest(code: code)
 
-		HTTP.request(method: .post, authURL, headers: ["Accept": "application/json"], parameters: parameters, with: { (data, response, error) in
-			guard let data = data else {
-				while !authenticationQueue.isEmpty {
-					authenticationQueue.removeFirst()(error)
+		do {
+			let requestData = try JSONEncoder().encode(accessRequest)
+
+			HTTP.request(method: .post, authURL, headers: ["Content-Type": "application/json"], body: requestData, with: { (data, response, error) in
+				guard let data = data else {
+					while !authenticationQueue.isEmpty {
+						authenticationQueue.removeFirst()(error)
+					}
+
+					return
 				}
 
-				return
-			}
+				do {
+					GitHub.access = try JSONDecoder().decode(Access.self, from: data)
 
-			do {
-				GitHub.access = try JSONDecoder().decode(Access.self, from: data)
-
-				while !authenticationQueue.isEmpty {
-					authenticationQueue.removeFirst()(nil)
+					while !authenticationQueue.isEmpty {
+						authenticationQueue.removeFirst()(nil)
+					}
 				}
-			}
-			catch {
-				while !authenticationQueue.isEmpty {
-					authenticationQueue.removeFirst()(error)
+				catch {
+					while !authenticationQueue.isEmpty {
+						authenticationQueue.removeFirst()(error)
+					}
 				}
+			})
+		}
+		catch {
+			while !authenticationQueue.isEmpty {
+				authenticationQueue.removeFirst()(error)
 			}
-		})
+		}
 	}
 
 	/// Signs the user out of GitHub on SourceHub.
