@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHub
 
 class ContentsViewController: UITableViewController {
     

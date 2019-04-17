@@ -273,7 +273,7 @@ public class GitHub {
     /// Fetches the contents of a repo.
     ///
     /// - Parameter handler: a Handler that will be passed the contents or an error if one occurs.
-    static func handleContents(owner: String, repo: String, path: String, with handler: Handler<[Content], Swift.Error>) {
+    public static func handleContents(owner: String, repo: String, path: String, with handler: Handler<[Content], Swift.Error>) {
         guard let access = access else {
             handler(.failure(Error.notAuthenticated))
             return

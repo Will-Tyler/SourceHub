@@ -13,7 +13,7 @@ public extension GitHub {
 
 	struct Owner: Codable {
 
-		let login: String
+		public let login: String
 		let id: Int
 		let url: String
 		let reposURL: URL

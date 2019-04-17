@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHub
 
 class RepositoryViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     

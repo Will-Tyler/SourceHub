@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension GitHub {
+public extension GitHub {
 
     struct Content: Codable {
         
