@@ -76,10 +76,10 @@ class ReposViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let repo = repositories[indexPath.row]
-		let commitsViewController = CommitsViewController()
-
-		commitsViewController.repo = repo
-		navigationController?.pushViewController(commitsViewController, animated: true)
+        let repositoryViewController = RepositoryViewController()
+        
+        repositoryViewController.repo = repo
+        navigationController?.pushViewController(repositoryViewController, animated: true)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 

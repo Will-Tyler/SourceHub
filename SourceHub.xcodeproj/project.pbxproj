@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		16BF059AC878B13B05590426 /* Pods_GitHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4A942032895D984A9A7E8C /* Pods_GitHub.framework */; };
 		18CDAD24225BFF7200EBD5DE /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */; };
+		18DA5C2F2267E05000B78ABE /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */; };
+		18DA5C312267E09C00B78ABE /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C302267E09C00B78ABE /* Contents.swift */; };
+		18DA5C332267E0E800B78ABE /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C322267E0E800B78ABE /* ContentsViewController.swift */; };
+		18DFCA9422653B5400CB67DC /* (null) in Sources */ = {isa = PBXBuildFile; };
+		18DFCA9622653BBC00CB67DC /* (null) in Sources */ = {isa = PBXBuildFile; };
+		18DFCA9B2265425100CB67DC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4C197A3D224EE249002B1096 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3C224EE249002B1096 /* Macro.swift */; };
 		4C197A3F224EE531002B1096 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C197A3E224EE531002B1096 /* CGSize.swift */; };
 		4C2C6EF5226588110079062C /* AccessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C6EF4226588110079062C /* AccessRequest.swift */; };
@@ -92,6 +98,9 @@
 		18A5D2A8224D6E80005A7D8B /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
 		18CDAD25225C003800EBD5DE /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
+		18DA5C302267E09C00B78ABE /* Contents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
+		18DA5C322267E0E800B78ABE /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentsViewController.swift; path = SourceHub/Controllers/ContentsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1E4A942032895D984A9A7E8C /* Pods_GitHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		243EFFDE672F24D48FB5B2FD /* Pods_SourceHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SourceHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C11CEF4225E8C08000309D8 /* IssuesEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesEvent.swift; sourceTree = "<group>"; };
@@ -230,8 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */,
+				18DA5C322267E0E800B78ABE /* ContentsViewController.swift */,
 				4C4286CC224C304D00E00170 /* OverViewController.swift */,
 				4C3CD659225807B300F1D023 /* ProfileViewController.swift */,
+				18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */,
 				4C3CD65B225808D200F1D023 /* ReposViewController.swift */,
 			);
 			path = Profile;
@@ -322,6 +333,7 @@
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CC5A9072260F84700D1ACFB /* PullRequest.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
+				18DA5C302267E09C00B78ABE /* Contents.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";
@@ -525,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CABC7E22265314200EB5842 /* ForkEvent.swift in Sources */,
+				18DA5C312267E09C00B78ABE /* Contents.swift in Sources */,
 				4CABC7E62265314200EB5842 /* PullRequestEvent.swift in Sources */,
 				4CABC7D82265312D00EB5842 /* Commit.swift in Sources */,
 				4CABC7E52265314200EB5842 /* MemberEvent.swift in Sources */,
@@ -557,15 +570,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DFCA9622653BBC00CB67DC /* (null) in Sources */,
 				4C3CD6552257FBB000F1D023 /* RepoTableViewCell.swift in Sources */,
 				4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */,
 				4C3CD65E22581E8000F1D023 /* ImageDownloader.swift in Sources */,
 				4C4286CF224C31AF00E00170 /* ViewController.swift in Sources */,
 				4C8010DE2249912500596297 /* HTTP.swift in Sources */,
+				18DA5C332267E0E800B78ABE /* ContentsViewController.swift in Sources */,
 				4CF32163222DF6C70034F1D9 /* SignInViewController.swift in Sources */,
 				4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */,
 				4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */,
+				18DFCA9422653B5400CB67DC /* (null) in Sources */,
 				4C4286CD224C304D00E00170 /* OverViewController.swift in Sources */,
+				18DA5C2F2267E05000B78ABE /* RepositoryViewController.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
 				4C8010E02249934F00596297 /* String.swift in Sources */,
 				4C3CD65A225807B300F1D023 /* ProfileViewController.swift in Sources */,
@@ -577,6 +594,7 @@
 				4C5962FF225E64570020649A /* GitHubEvent.swift in Sources */,
 				4C8010DC224990F800596297 /* URL.swift in Sources */,
 				4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */,
+				18DFCA9B2265425100CB67DC /* (null) in Sources */,
 				4C197A3D224EE249002B1096 /* Macro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,7 +629,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 83A9Z5EMT8;
+				DEVELOPMENT_TEAM = CHH27M5823;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -641,7 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 83A9Z5EMT8;
+				DEVELOPMENT_TEAM = CHH27M5823;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -786,7 +804,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83A9Z5EMT8;
+				DEVELOPMENT_TEAM = CHH27M5823;
 				INFOPLIST_FILE = SourceHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -806,7 +824,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83A9Z5EMT8;
+				DEVELOPMENT_TEAM = CHH27M5823;
 				INFOPLIST_FILE = SourceHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

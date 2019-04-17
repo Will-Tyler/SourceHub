@@ -269,6 +269,35 @@ public class GitHub {
 			}
 		})
 	}
-
+    
+    /// Fetches the contents of a repo.
+    ///
+    /// - Parameter handler: a Handler that will be passed the contents or an error if one occurs.
+    public static func handleContents(owner: String, repo: String, path: String, with handler: Handler<[Content], Swift.Error>) {
+        guard let access = access else {
+            handler(.failure(Error.notAuthenticated))
+            return
+        }
+        
+        let parameters = [
+            "access_token": access.token,
+        ]
+        
+        HTTP.request(apiURL, endpoint: "repos/\(owner)/\(repo)/contents/\(path)", parameters: parameters, with: { (data, response, error) in
+            guard let data = data else {
+                handler(.failure(error ?? Error.apiError))
+                return
+            }
+            
+            do {
+                let contents = try JSONDecoder().decode([Content].self, from: data)
+                
+                handler(.success(contents))
+            }
+            catch {
+                handler(.failure(error))
+            }
+        })
+    }
 
 }
