@@ -9,7 +9,7 @@
 import Foundation
 
 
-extension GitHub {
+public extension GitHub {
 
 	struct Owner: Codable {
 

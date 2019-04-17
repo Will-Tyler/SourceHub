@@ -11,25 +11,25 @@ import Foundation
 
 extension GitHub {
 
-	struct AuthenticatedUser: Codable {
+	public struct AuthenticatedUser: Codable {
 
-		let login: String
-		let id: Int
-		let avatarURL: URL
-		let followersURL: URL
-		let followingURL: String
-		let starredURL: String
-		let reposURL: URL
-		let name: String?
-		let company: String?
-		let location: String?
-		let email: String?
-		let bio: String?
-		let publicReposCount: Int
-		let followersCount: Int
-		let followingCount: Int
-		let totalPrivateReposCount: Int
-		let ownedPrivateReposCount: Int
+		public let login: String
+		public let id: Int
+		public let avatarURL: URL
+		public let followersURL: URL
+		public let followingURL: String
+		public let starredURL: String
+		public let reposURL: URL
+		public let name: String?
+		public let company: String?
+		public let location: String?
+		public let email: String?
+		public let bio: String?
+		public let publicReposCount: Int
+		public let followersCount: Int
+		public let followingCount: Int
+		public let totalPrivateReposCount: Int
+		public let ownedPrivateReposCount: Int
 
 		private enum CodingKeys: String, CodingKey {
 			case login

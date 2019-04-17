@@ -11,7 +11,7 @@ import UIKit
 
 extension GitHub {
 
-	enum EventType: String, Codable {
+	public enum EventType: String, Codable {
 
 		case checkRun = "CheckRunEvent"
 		case checkSuite = "CheckSuiteEvent"
@@ -60,16 +60,16 @@ extension GitHub {
 
 	}
 
-	struct Actor: Codable {
+	public struct Actor: Codable {
 
 		let id: Int
 		let login: String
-		let displayLogin: String
+		public let displayLogin: String
 		let gravatarID: String
 		let url: URL
 		let avatarURL: URL
 
-		func handleAvatarImage(with handler: Handler<UIImage, Swift.Error>) {
+		public func handleAvatarImage(with handler: Handler<UIImage, Swift.Error>) {
 			let request = URLRequest(url: avatarURL)
 
 			imageDownloader.download(request, completion: { (dataResponse) in
@@ -93,17 +93,17 @@ extension GitHub {
 
 	}
 
-	struct Repo: Codable {
+	public struct Repo: Codable {
 
-		let id: Int
-		let name: String
-		let url: URL
+		public let id: Int
+		public let name: String
+		public let url: URL
 
 	}
 
 }
 
-protocol GitHubEvent: Codable {
+public protocol GitHubEvent: Codable {
 
 	var id: String { get }
 	var type: GitHub.EventType { get }

@@ -11,15 +11,15 @@ import Foundation
 
 extension GitHub {
 
-	struct Issue: Codable {
+	public struct Issue: Codable {
 
-		let url: URL
-		let repositoryURL: URL
-		let id: UInt
-		let number: UInt
-		let title: String
-		let state: String
-		let isLocked: Bool
+		public let url: URL
+		public let repositoryURL: URL
+		public let id: UInt
+		public let number: UInt
+		public let title: String
+		public let state: String
+		public let isLocked: Bool
 
 		private enum CodingKeys: String, CodingKey {
 			case url

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHub
 
 
 class ReposViewController: UITableViewController {
@@ -47,7 +48,7 @@ class ReposViewController: UITableViewController {
 	private var repositories = [GitHub.Repository]()
 
 	private func fetchRepositories() {
-		GitHub.handleRepositories(with: Handler { [weak self] result in
+		GitHub.handleRepositories(with: Handler<[GitHub.Repository], Error> { [weak self] result in
 			switch result {
 			case .failure(let error):
 				debugPrint(error)

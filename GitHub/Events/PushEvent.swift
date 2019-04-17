@@ -11,17 +11,17 @@ import Foundation
 
 extension GitHub {
 
-	struct PushEvent: Codable, GitHubEvent {
+	public struct PushEvent: Codable, GitHubEvent {
 
-		let id: String
-		let type: EventType
-		let actor: Actor
-		let repo: Repo
-		let payload: Payload
-		let isPublic: Bool
-		let createdAt: String
+		public let id: String
+		public let type: EventType
+		public let actor: Actor
+		public let repo: Repo
+		public let payload: Payload
+		public let isPublic: Bool
+		public let createdAt: String
 
-		init(from decoder: Decoder) throws {
+		public init(from decoder: Decoder) throws {
 			let container = try decoder.container(keyedBy: CodingKeys.self)
 
 			self.type = try container.decode(EventType.self, forKey: .type)
@@ -63,7 +63,7 @@ extension GitHub {
 
 extension GitHub.PushEvent {
 
-	struct Payload: Codable {
+	public struct Payload: Codable {
 
 		let pushID: Int
 		let size: UInt
