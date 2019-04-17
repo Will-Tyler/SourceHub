@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		18CDAD24225BFF7200EBD5DE /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */; };
 		18CDAD26225C003800EBD5DE /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDAD25225C003800EBD5DE /* Commit.swift */; };
+		18DFCA9422653B5400CB67DC /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFCA9322653B5400CB67DC /* ContentsViewController.swift */; };
+		18DFCA9622653BBC00CB67DC /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFCA9522653BBC00CB67DC /* Contents.swift */; };
+		18DFCA9B2265425100CB67DC /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFCA9A2265425100CB67DC /* RepositoryViewController.swift */; };
 		4C11CEF5225E8C08000309D8 /* IssuesEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEF4225E8C08000309D8 /* IssuesEvent.swift */; };
 		4C11CEF7225EA574000309D8 /* DeleteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEF6225EA574000309D8 /* DeleteEvent.swift */; };
 		4C11CEF9225EA690000309D8 /* IssueCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11CEF8225EA690000309D8 /* IssueCommentEvent.swift */; };
@@ -60,6 +63,9 @@
 		18A5D2A8224D6E80005A7D8B /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
 		18CDAD25225C003800EBD5DE /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		18DFCA9322653B5400CB67DC /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentsViewController.swift; path = ../ContentsViewController.swift; sourceTree = "<group>"; };
+		18DFCA9522653BBC00CB67DC /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
+		18DFCA9A2265425100CB67DC /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		243EFFDE672F24D48FB5B2FD /* Pods_SourceHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SourceHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C11CEF4225E8C08000309D8 /* IssuesEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesEvent.swift; sourceTree = "<group>"; };
 		4C11CEF6225EA574000309D8 /* DeleteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEvent.swift; sourceTree = "<group>"; };
@@ -181,10 +187,12 @@
 		4C3CD6582258078300F1D023 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				18DFCA9322653B5400CB67DC /* ContentsViewController.swift */,
 				18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */,
 				4C4286CC224C304D00E00170 /* OverViewController.swift */,
 				4C3CD659225807B300F1D023 /* ProfileViewController.swift */,
 				4C3CD65B225808D200F1D023 /* ReposViewController.swift */,
+				18DFCA9A2265425100CB67DC /* RepositoryViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CC5A9072260F84700D1ACFB /* PullRequest.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
+				18DFCA9522653BBC00CB67DC /* Contents.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";
@@ -401,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CDAD26225C003800EBD5DE /* Commit.swift in Sources */,
+				18DFCA9622653BBC00CB67DC /* Contents.swift in Sources */,
 				4C11CEF9225EA690000309D8 /* IssueCommentEvent.swift in Sources */,
 				4C3CD6552257FBB000F1D023 /* RepoTableViewCell.swift in Sources */,
 				4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */,
@@ -412,6 +422,7 @@
 				4CF32163222DF6C70034F1D9 /* SignInViewController.swift in Sources */,
 				4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */,
 				4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */,
+				18DFCA9422653B5400CB67DC /* ContentsViewController.swift in Sources */,
 				4C4286CD224C304D00E00170 /* OverViewController.swift in Sources */,
 				4CC5A9082260F84700D1ACFB /* PullRequest.swift in Sources */,
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
@@ -442,6 +453,7 @@
 				4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */,
 				4C83952B2249CE7100A7DFC2 /* Access.swift in Sources */,
 				4C7E7DF4224E90830095C4A8 /* WatchEvent.swift in Sources */,
+				18DFCA9B2265425100CB67DC /* RepositoryViewController.swift in Sources */,
 				4C197A3D224EE249002B1096 /* Macro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
