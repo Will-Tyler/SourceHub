@@ -28,12 +28,14 @@ class ContentsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchContents()
         // Do any additional setup after loading the view.
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        let content = self.contents[indexPath.row]
+        cell.textLabel?.text = "Type: \(content.type)   Name: \(content.name)"
         return cell
     }
 
@@ -44,7 +46,7 @@ class ContentsViewController: UITableViewController {
     func fetchContents() {
         guard let repo = self.repo else { return }
         
-        GitHub.handleContents(owner: repo.owner.login, repo: repo.name, path: repo.url.absoluteString, with: Handler{ [weak self] result in
+        GitHub.handleContents(owner: repo.owner.login, repo: repo.name, with: Handler{ [weak self] result in
             switch result {
             case .failure(let error):
                 debugPrint(error)

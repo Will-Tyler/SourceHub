@@ -12,12 +12,13 @@ public extension GitHub {
 
     struct Content: Codable {
         
-        var type: String
-        var size: Int
-        var name: String
-        var path: String
-        var content: String
-        var url: URL
+        public let type: String
+        public let size: Int
+        public let name: String
+        public let path: String
+        public let url: URL
+        public let download_url: URL?
         
     }
+    
 }
