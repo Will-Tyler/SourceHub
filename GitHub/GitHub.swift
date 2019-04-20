@@ -240,6 +240,7 @@ public class GitHub {
 	}
 
 	/// Fetches the commits from a repo.
+    /// Path component used to go into dir or file
 	///
 	/// - Parameter handler: a Handler that will be passed the commits or an error if one occurs.
     public static func handleCommits(owner: String, repo: String, with handler: Handler<[Commit], Swift.Error>) {
@@ -273,7 +274,7 @@ public class GitHub {
     /// Fetches the contents of a repo.
     ///
     /// - Parameter handler: a Handler that will be passed the contents or an error if one occurs.
-    public static func handleContents(owner: String, repo: String, with handler: Handler<[Content], Swift.Error>) {
+    public static func handleContents(owner: String, repo: String, path: String? = "", with handler: Handler<[Content], Swift.Error>) {
         guard let access = access else {
             handler(.failure(Error.notAuthenticated))
             return
@@ -283,7 +284,12 @@ public class GitHub {
             "access_token": access.token,
         ]
         
-        HTTP.request(apiURL, endpoint: "repos/\(owner)/\(repo)/contents", parameters: parameters, with: { (data, response, error) in
+        var url = "repos/\(owner)/\(repo)/contents"
+        if let path = path {
+            url += path
+        }
+        
+        HTTP.request(apiURL, endpoint: url, parameters: parameters, with: { (data, response, error) in
             guard let data = data else {
                 handler(.failure(error ?? Error.apiError))
                 return

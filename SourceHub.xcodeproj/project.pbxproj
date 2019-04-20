@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16BF059AC878B13B05590426 /* Pods_GitHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4A942032895D984A9A7E8C /* Pods_GitHub.framework */; };
 		18CDAD24225BFF7200EBD5DE /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */; };
+		18D54880226B8F1400CBEBC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5487F226B8F1400CBEBC0 /* WebViewController.swift */; };
 		18DA5C2F2267E05000B78ABE /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */; };
 		18DA5C312267E09C00B78ABE /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C302267E09C00B78ABE /* Contents.swift */; };
 		18DA5C332267E0E800B78ABE /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5C322267E0E800B78ABE /* ContentsViewController.swift */; };
@@ -98,6 +99,7 @@
 		18A5D2A8224D6E80005A7D8B /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		18CDAD23225BFF7200EBD5DE /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
 		18CDAD25225C003800EBD5DE /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		18D5487F226B8F1400CBEBC0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		18DA5C302267E09C00B78ABE /* Contents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		18DA5C322267E0E800B78ABE /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentsViewController.swift; path = SourceHub/Controllers/ContentsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -244,6 +246,7 @@
 				4C3CD659225807B300F1D023 /* ProfileViewController.swift */,
 				18DA5C2E2267E05000B78ABE /* RepositoryViewController.swift */,
 				4C3CD65B225808D200F1D023 /* ReposViewController.swift */,
+				18D5487F226B8F1400CBEBC0 /* WebViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18DFCA9622653BBC00CB67DC /* (null) in Sources */,
+				18D54880226B8F1400CBEBC0 /* WebViewController.swift in Sources */,
 				4C3CD6552257FBB000F1D023 /* RepoTableViewCell.swift in Sources */,
 				4C397EF922557412001C801B /* EventTableViewCell.swift in Sources */,
 				4C3CD65E22581E8000F1D023 /* ImageDownloader.swift in Sources */,
