@@ -13,7 +13,7 @@ public extension GitHub {
 
 	struct Content: Codable {
 
-		public let type: String
+		public let type: ContentType
 		public let size: Int
 		public let name: String
 		public let path: String
@@ -33,9 +33,9 @@ public extension GitHub {
 }
 
 
-public extension GitHub {
+public extension GitHub.Content {
 
-	enum ContentType: String {
+	enum ContentType: String, Codable {
 
 		case file = "file"
 		case directory = "dir"

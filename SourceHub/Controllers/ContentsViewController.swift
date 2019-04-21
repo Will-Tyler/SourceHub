@@ -25,24 +25,43 @@ class ContentsViewController: UITableViewController {
 	}
 
 	var repo: GitHub.Repository?
-	var contents = [GitHub.Content]()
+	private var contents = [GitHub.Content]()
 	private var path = ""
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		fetchContents()
+
+		tableView.tableFooterView = UIView(frame: .zero)
+		tableView.register(UITableViewCell.self)
+	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		navigationController?.navigationBar.prefersLargeTitles = true
 	}
 
+	// MARK: Table View
+	private lazy var iconSize = CGSize(square: 24)
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell()
-		let content = self.contents[indexPath.row]
+		let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, for: indexPath)
+		let content = contents[indexPath.row]
+		let icon: UIImage
 
-		cell.textLabel?.text = "Type: \(content.type)   Name: \(content.name)"
+		switch content.type {
+		case .file:
+			icon = UIImage(named: "description")!
+
+		case .directory:
+			icon = UIImage(named: "folder")!
+		}
+
+		cell.imageView?.image = icon.af_imageScaled(to: iconSize)
+		cell.textLabel?.text = "\(content.name)"
 
 		return cell
 	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return contents.count
 	}
@@ -68,7 +87,7 @@ class ContentsViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let content = self.contents[indexPath.row]
 
-		if content.type == "dir" {
+		if content.type == .directory {
 			path += "/\(content.name)"
 			fetchContents(path: path)
 		}

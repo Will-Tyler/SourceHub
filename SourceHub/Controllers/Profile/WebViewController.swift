@@ -31,5 +31,10 @@ class WebViewController: UIViewController {
 
 		webView.loadRequest(URLRequest(url: url))
 	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		navigationController?.navigationBar.prefersLargeTitles = false
+	}
 
 }
