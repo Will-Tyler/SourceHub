@@ -32,7 +32,7 @@ class CommitsViewController: UITableViewController {
 
         fetchCommits()
 
-		tableView.register(UITableViewCell.self)
+		tableView.register(SubtitleTableViewCell.self)
         tableView.reloadData()
 	}
 
@@ -40,7 +40,7 @@ class CommitsViewController: UITableViewController {
 		return commits.count
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(ofType: SubtitleTableViewCell.self, for: indexPath)
 		let commit = commits[indexPath.row]
 
 		cell.textLabel?.text = commit.committer.login

@@ -31,7 +31,7 @@ class ContentsViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		fetchContents()
+		fetchContents(path: path)
 
 		tableView.tableFooterView = UIView(frame: .zero)
 		tableView.register(UITableViewCell.self)
@@ -88,8 +88,13 @@ class ContentsViewController: UITableViewController {
 		let content = self.contents[indexPath.row]
 
 		if content.type == .directory {
-			path += "/\(content.name)"
-			fetchContents(path: path)
+			let contentsViewController = ContentsViewController()
+
+			contentsViewController.title = content.name
+			contentsViewController.path = self.path + "/" + content.name
+			contentsViewController.repo = self.repo
+
+			navigationController?.pushViewController(contentsViewController, animated: true)
 		}
 		else {
 			if let downloadURL = content.downloadURL {

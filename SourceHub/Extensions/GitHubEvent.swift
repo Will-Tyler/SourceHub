@@ -66,8 +66,7 @@ extension GitHubEvent {
 				receiver = repo.name
 			}
 
-			let url = URL(string: "sourcehub://repo/\(repo.id)")!
-			let attributes: [NSAttributedString.Key: Any] = [.font: boldFont, .link: url]
+			let attributes: [NSAttributedString.Key: Any] = [.font: boldFont]
 			let boldRepoName = NSAttributedString(string: receiver, attributes: attributes)
 			let actions: [GitHub.EventType: String] = [
 				.create: "created a repository",

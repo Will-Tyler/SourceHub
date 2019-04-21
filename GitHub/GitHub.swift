@@ -22,7 +22,7 @@ public class GitHub {
 		else {
 			return nil
 		}
-		}() {
+	}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -239,6 +239,7 @@ public class GitHub {
 		})
 	}
 
+	// TODO: Update documentation below
 	/// Fetches the commits from a repo.
 	/// Path component used to go into dir or file
 	///

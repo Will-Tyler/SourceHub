@@ -25,6 +25,7 @@
 		4C3CD65A225807B300F1D023 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD659225807B300F1D023 /* ProfileViewController.swift */; };
 		4C3CD65C225808D200F1D023 /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD65B225808D200F1D023 /* ReposViewController.swift */; };
 		4C3CD65E22581E8000F1D023 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CD65D22581E8000F1D023 /* ImageDownloader.swift */; };
+		4C3DFF32226C0B9400C5756A /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3DFF31226C0B9400C5756A /* SubtitleTableViewCell.swift */; };
 		4C4286C7224C2C8400E00170 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C6224C2C8400E00170 /* TabBarController.swift */; };
 		4C4286C9224C2E2E00E00170 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286C8224C2E2D00E00170 /* UIViewController.swift */; };
 		4C4286CB224C2FFA00E00170 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4286CA224C2FFA00E00170 /* FeedViewController.swift */; };
@@ -121,6 +122,7 @@
 		4C3CD659225807B300F1D023 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4C3CD65B225808D200F1D023 /* ReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
 		4C3CD65D22581E8000F1D023 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		4C3DFF31226C0B9400C5756A /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		4C4286C6224C2C8400E00170 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4C4286C8224C2E2D00E00170 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4C4286CA224C2FFA00E00170 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				4C397EF822557412001C801B /* EventTableViewCell.swift */,
 				4C3CD6542257FBB000F1D023 /* RepoTableViewCell.swift */,
+				4C3DFF31226C0B9400C5756A /* SubtitleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				4CF32161222DF6C70034F1D9 /* AppDelegate.swift in Sources */,
 				4C8010E02249934F00596297 /* String.swift in Sources */,
 				4C3CD65A225807B300F1D023 /* ProfileViewController.swift in Sources */,
+				4C3DFF32226C0B9400C5756A /* SubtitleTableViewCell.swift in Sources */,
 				4C596301225E6ED50020649A /* UITableView.swift in Sources */,
 				18CDAD24225BFF7200EBD5DE /* CommitsViewController.swift in Sources */,
 				4C397EF72255710B001C801B /* Colors.swift in Sources */,
