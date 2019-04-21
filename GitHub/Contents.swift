@@ -22,9 +22,23 @@ public extension GitHub {
 
 
 		private enum CodingKeys: String, CodingKey {
+
 			case type, size, name, path, url
 			case downloadURL = "download_url"
+
 		}
+
+	}
+
+}
+
+
+public extension GitHub {
+
+	enum ContentType: String {
+
+		case file = "file"
+		case directory = "dir"
 
 	}
 

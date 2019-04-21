@@ -73,11 +73,10 @@ class ContentsViewController: UITableViewController {
 			fetchContents(path: path)
 		}
 		else {
-			let webView = WebViewController()
-
 			if let downloadURL = content.downloadURL {
-				webView.url = downloadURL.absoluteString
-				navigationController?.pushViewController(webView, animated: true)
+				let webViewController = WebViewController(url: downloadURL)
+
+				navigationController?.pushViewController(webViewController, animated: true)
 			}
 		}
 
