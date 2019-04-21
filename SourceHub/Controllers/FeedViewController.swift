@@ -41,7 +41,7 @@ class FeedViewController: UITableViewController {
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: .valueChanged)
 
-		fetchEvents()
+		fetchEvents(page: currentPage)
 	}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)

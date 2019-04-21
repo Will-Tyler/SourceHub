@@ -66,10 +66,8 @@ extension GitHubEvent {
 				receiver = repo.name
 			}
 
-			let boldRepoName = NSAttributedString(string: receiver, attributes: [.font: boldFont])
-
-			attributedMessage.append(boldDisplayLogin)
-
+			let attributes: [NSAttributedString.Key: Any] = [.font: boldFont]
+			let boldRepoName = NSAttributedString(string: receiver, attributes: attributes)
 			let actions: [GitHub.EventType: String] = [
 				.create: "created a repository",
 				.delete: "deleted",
@@ -85,6 +83,7 @@ extension GitHubEvent {
 
 			assert(action != nil)
 
+			attributedMessage.append(boldDisplayLogin)
 			attributedMessage.append(NSAttributedString(string: " \(action ?? "") "))
 			attributedMessage.append(boldRepoName)
 
