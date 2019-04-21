@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 public extension GitHub {
 
     struct Content: Codable {
@@ -20,4 +21,5 @@ public extension GitHub {
         var url: URL
         
     }
+
 }
