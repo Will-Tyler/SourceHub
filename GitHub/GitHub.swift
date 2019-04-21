@@ -22,7 +22,7 @@ public class GitHub {
 		else {
 			return nil
 		}
-	}() {
+		}() {
 		didSet {
 			if let access = access, let accessData = try? JSONEncoder().encode(access) {
 				UserDefaults.standard.set(accessData, forKey: accessDataKey)
@@ -240,10 +240,10 @@ public class GitHub {
 	}
 
 	/// Fetches the commits from a repo.
-    /// Path component used to go into dir or file
+	/// Path component used to go into dir or file
 	///
 	/// - Parameter handler: a Handler that will be passed the commits or an error if one occurs.
-    public static func handleCommits(owner: String, repo: String, with handler: Handler<[Commit], Swift.Error>) {
+	public static func handleCommits(owner: String, repo: String, with handler: Handler<[Commit], Swift.Error>) {
 		guard let access = access else {
 			handler(.failure(Error.notAuthenticated))
 			return
@@ -270,47 +270,49 @@ public class GitHub {
 			}
 		})
 	}
-    
-    /// Fetches the contents of a repo.
-    ///
-    /// - Parameter handler: a Handler that will be passed the contents or an error if one occurs.
-    public static func handleContents(owner: String, repo: String, path: String? = "", with handler: Handler<[Content], Swift.Error>) {
-        guard let access = access else {
-            handler(.failure(Error.notAuthenticated))
-            return
-        }
-        
-        let parameters = [
-            "access_token": access.token,
-        ]
-        
-        var url = "repos/\(owner)/\(repo)/contents"
-        if let path = path {
-            url += path
-        }
-        
-        HTTP.request(apiURL, endpoint: url, parameters: parameters, with: { (data, response, error) in
-            guard let data = data else {
-                handler(.failure(error ?? Error.apiError))
-                return
-            }
-            
-            do {
-                let result: [Content]
-                
-                if let contents = try? JSONDecoder().decode([Content].self, from: data) {
-                    result = contents
-                }
-                else {
-                    result = [try JSONDecoder().decode(Content.self, from: data)]
-                }
 
-                handler(.success(result))
-            }
-            catch {
-                handler(.failure(error))
-            }
-        })
-    }
+	// TODO: Update documentation below
+	/// Fetches the contents of a repo.
+	///
+	/// - Parameter handler: a Handler that will be passed the contents or an error if one occurs.
+	public static func handleContents(owner: String, repo: String, path: String? = nil, with handler: Handler<[Content], Swift.Error>) {
+		guard let access = access else {
+			handler(.failure(Error.notAuthenticated))
+			return
+		}
+
+		let parameters = [
+			"access_token": access.token,
+		]
+
+		var url = "repos/\(owner)/\(repo)/contents"
+
+		if let path = path {
+			url += path
+		}
+
+		HTTP.request(apiURL, endpoint: url, parameters: parameters, with: { (data, response, error) in
+			guard let data = data else {
+				handler(.failure(error ?? Error.apiError))
+				return
+			}
+
+			do {
+				let result: [Content]
+
+				if let contents = try? JSONDecoder().decode([Content].self, from: data) {
+					result = contents
+				}
+				else {
+					result = [try JSONDecoder().decode(Content.self, from: data)]
+				}
+
+				handler(.success(result))
+			}
+			catch {
+				handler(.failure(error))
+			}
+		})
+	}
 
 }

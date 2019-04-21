@@ -329,6 +329,7 @@
 				4C2C6EF4226588110079062C /* AccessRequest.swift */,
 				4CFEEBD42240553000487DA0 /* AuthenticatedUser.swift */,
 				18CDAD25225C003800EBD5DE /* Commit.swift */,
+				18DA5C302267E09C00B78ABE /* Contents.swift */,
 				4C4FCA762252D208008A6A4D /* Error.swift */,
 				4C7E7DF2224E90720095C4A8 /* Events */,
 				4C397EF4225566DD001C801B /* Handler.swift */,
@@ -336,7 +337,6 @@
 				4CFEEBD2224051DA00487DA0 /* Owner.swift */,
 				4CC5A9072260F84700D1ACFB /* PullRequest.swift */,
 				4CFEEBCE224050EA00487DA0 /* Repository.swift */,
-				18DA5C302267E09C00B78ABE /* Contents.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";

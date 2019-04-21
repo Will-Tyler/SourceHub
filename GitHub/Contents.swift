@@ -8,17 +8,24 @@
 
 import UIKit
 
+
 public extension GitHub {
 
-    struct Content: Codable {
-        
-        public let type: String
-        public let size: Int
-        public let name: String
-        public let path: String
-        public let url: URL
-        public let download_url: URL?
-        
-    }
-    
+	struct Content: Codable {
+
+		public let type: String
+		public let size: Int
+		public let name: String
+		public let path: String
+		public let url: URL
+		public let downloadURL: URL?
+
+
+		private enum CodingKeys: String, CodingKey {
+			case type, size, name, path, url
+			case downloadURL = "download_url"
+		}
+
+	}
+
 }
