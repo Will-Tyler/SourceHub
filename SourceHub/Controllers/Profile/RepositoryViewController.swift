@@ -24,13 +24,15 @@ class RepositoryViewController: UIPageViewController, UIPageViewControllerDelega
     }
     
     private let commitsViewController = CommitsViewController()
+    private let contentsViewController = ContentsViewController()
     
     var repo: GitHub.Repository? {
         didSet {
             commitsViewController.repo = repo
+            contentsViewController.repo = repo
         }
     }
-    private lazy var pages = [ContentsViewController(), commitsViewController] as [UIViewController]
+    private lazy var pages = [contentsViewController, commitsViewController] as [UIViewController]
     override func viewDidLoad() {
         super.viewDidLoad()
         
